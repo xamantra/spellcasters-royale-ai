@@ -46,12 +46,12 @@ public class AI : MonoBehaviour
         UpdateStates();
         remainingDistance = Mathf.RoundToInt(agent.remainingDistance);
 
-        var condition1 = player.Weapon == null && remainingDistance <= 0 && nearestWeapon != null && !isMoving && !rotating && !lootDetected && !lootInRange;
-        var condition2 = player.Weapon == null && remainingDistance <= 0 && nearestWeapon != null && !isMoving && !rotating && !lootDetected && !lootInRange;
-        var condition3 = player.Weapon == null && remainingDistance <= 0 && nearestWeapon != null && !isMoving && !rotating && !lootDetected && !lootInRange;
-        var condition4 = player.Weapon == null && remainingDistance <= 0 && nearestWeapon != null && !isMoving && !rotating && !lootDetected && !lootInRange;
-        var condition5 = player.Weapon == null && remainingDistance <= 0 && nearestWeapon != null && !isMoving && !rotating && !lootDetected && !lootInRange;
-        var condition6 = player.Weapon == null && remainingDistance <= 0 && nearestWeapon != null && !isMoving && !rotating && !lootDetected && !lootInRange;
+        var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
+        var condition2 = remainingDistance <= 0 && isMoving && !rotating;
+        var condition3 = player.Weapon == null && !isMoving && rotating && !lootDetected;
+        var condition4 = player.Weapon == null && nearestWeapon == null && isMoving && lootDetected;
+        var condition5 = player.Weapon == null && nearestWeapon != null;
+        var condition6 = player.Weapon == null && nearestWeapon != null && lootInRange;
 
         if (condition1) 
         {
