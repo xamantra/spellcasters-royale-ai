@@ -15,7 +15,7 @@ public class MissileLauncher : MonoBehaviour, IWeapon
         projectilePrefab.Spawn(transform.position, transform.rotation);
     }
 
-    public void Equip(Player player)
+    public void Equip(ref Player player)
     {
         player.SetWeapon(this);
         Destroy(gameObject);

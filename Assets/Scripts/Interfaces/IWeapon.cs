@@ -3,7 +3,7 @@
 public interface IWeapon
 {
     void Attack();
-    void Equip(Player player);
+    void Equip(ref Player player);
     Material Material { get; }
     Transform transform { get; }
 }

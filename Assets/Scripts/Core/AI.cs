@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,30 +6,30 @@ using UnityEngine.AI;
 public class AI : MonoBehaviour
 {
     #region variables
-    [SerializeField, Range(5f, 15f)] private float roamRange;
-    [SerializeField, Range(3f, 5f)] private float scanRange;
+    [SerializeField, Range(5f, 20f)] private float roamRange;
+    [SerializeField, Range(5f, 15f)] private float attackRange;
     [SerializeField, Range(2f, 4f)] private float pickupRange;
     [SerializeField, Range(0f, 1f)] private float rotationLerp;
     [SerializeField] private LayerMask enemyLayerMask;
     [SerializeField] private LayerMask lootLayerMask;
-    [SerializeField] private LayerMask areaMask;
     [SerializeField] private Transform directionGuide;
 
     private bool lootDetected;
-    private bool lootInRange;
     private bool enemyDetected;
+    private bool lootInRange;
+    private bool enemyInRange;
     private Player player;
     private NavMeshAgent agent;
     private Collider collider;
 
     private Vector3 currentDestination;
-    private int remainingDistance;
+    private float remainingDistance;
     private bool gettingNearestObject;
     private int desiredRotationY;
+    private bool rotated;
     private int currentRotationY;
-    private bool isMoving;
-    private bool rotating;
     private IWeapon nearestWeapon;
+    private Player nearestPlayer;
     #endregion
 
     #region unity methods
@@ -42,63 +41,170 @@ public class AI : MonoBehaviour
     private void Update()
     {
         UpdateStates();
-        remainingDistance = Mathf.RoundToInt(agent.remainingDistance);
+        remainingDistance = agent.remainingDistance;
 
-        var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
-        var condition2 = remainingDistance <= 0 && isMoving && !rotating;
-        var condition3 = remainingDistance <= 0 && !isMoving && rotating && !lootDetected;
-        var condition4 = player.Weapon == null && nearestWeapon == null && isMoving && lootDetected;
-        var condition5 = player.Weapon == null && nearestWeapon != null;
-        var condition6 = player.Weapon == null && nearestWeapon != null && lootInRange;
-
-        if (condition1) 
+        if (player.Weapon == null)
         {
-            RotateRandom();
-            return;
-        }
-
-        if (condition2)
-        {
-            isMoving = false;
-            return;
-        }
-
-        if (condition3)
-        {
-            SmoothRotate();
-            return;
-        }
-
-        if (condition4)
-        {
-            var weapons = Scan(scanRange, lootLayerMask);
-            if (weapons.Length > 0 && !gettingNearestObject)
+            var weapons = Scan<IWeapon>(roamRange, lootLayerMask.value);
+            if (remainingDistance <= 0) // no weapon and not moving
             {
-                GetNearest(ref nearestWeapon, weapons, transform.position);
+                if (rotated)
+                {
+                    SmoothRotate();
+                }
+                else
+                {
+                    if (lootDetected && !gettingNearestObject && nearestWeapon == null)
+                    {
+                        GetNearest(ref nearestWeapon, weapons, transform.position);
+                    }
+                    else if (nearestWeapon != null && !lootInRange)
+                    {
+                        try
+                        {
+                            Move(nearestWeapon.transform.position);
+                        }
+                        catch
+                        {
+                            nearestWeapon = null;
+                        }
+                    }
+                    else if (lootInRange)
+                    {
+                        Stop();
+                        try
+                        {
+                            nearestWeapon.Equip(ref player);
+                        }
+                        catch
+                        {
+                            nearestWeapon = null;
+                        }
+                    }
+                    else
+                    {
+                        RotateRandom();
+                    }
+                }
+            }
+            else // no weapon and moving
+            {
+                if (rotated)
+                {
+                    Move(transform.position);
+                }
+                else
+                {
+                    if (lootDetected && !gettingNearestObject && nearestWeapon == null)
+                    {
+                        GetNearest(ref nearestWeapon, weapons, transform.position);
+                    }
+                    else if (nearestWeapon != null && !lootInRange)
+                    {
+                        try
+                        {
+                            Move(nearestWeapon.transform.position);
+                        }
+                        catch
+                        {
+                            nearestWeapon = null;
+                        }
+                    }
+                    else if (lootInRange)
+                    {
+                        Stop();
+                        try
+                        {
+                            nearestWeapon.Equip(ref player);
+                        }
+                        catch
+                        {
+                            nearestWeapon = null;
+                        }
+                    }
+                }
+            }
+        }
+        else
+        {
+            var enemies = Scan<Player>(roamRange, enemyLayerMask.value);
+            if (remainingDistance <= 0) // has weapon and not moving
+            {
+                if (rotated)
+                {
+                    SmoothRotate();
+                }
+                else
+                {
+                    if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
+                    {
+                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                    }
+                    else if (nearestPlayer != null && !enemyInRange)
+                    {
+                        Move(nearestPlayer.transform.position);
+                    }
+                    else if (enemyInRange)
+                    {
+                        Stop();
+                    }
+                    else
+                    {
+                        RotateRandom();
+                    }
+                }
+            }
+            else // has weapon and moving
+            {
+                if (rotated)
+                {
+                    Move(transform.position);
+                }
+                else
+                {
+                    if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
+                    {
+                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                    }
+                    else if (nearestPlayer != null && !enemyInRange)
+                    {
+                        Move(nearestPlayer.transform.position);
+                    }
+                    else if (enemyInRange)
+                    {
+                        Stop();
+                    }
+                }
             }
         }
 
-        //if (player.Weapon == null && remainingDistance > 0 && nearestWeapon == null)
+        #region temp
+        //var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
+        //var condition2 = remainingDistance <= 0 && isMoving && !rotating;
+        //var condition3 = remainingDistance <= 0 && !isMoving && rotating && !lootDetected;
+        //var condition4 = player.Weapon == null && nearestWeapon == null && isMoving && lootDetected;
+        //var condition5 = player.Weapon == null && nearestWeapon != null;
+        //var condition6 = player.Weapon == null && nearestWeapon != null && lootInRange;
+
+        //if (condition1)
         //{
-        //    var weapons = Scan(scanRange, lootLayerMask);
-        //    if (weapons.Length > 0)
-        //    {
-        //        if (!gettingNearestObject)
-        //        {
-        //            nearestWeapon = null;
-        //            GetNearest(ref nearestWeapon, weapons, transform.position);
-        //        }
-        //        if (nearestWeapon != null)
-        //        {
-        //            Move(nearestWeapon.transform.position);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        return;
-        //    }
+        //    RotateRandom();
+        //    return;
         //}
-        //if (player.Weapon == null && nearestWeapon == null && lootDetected)
+
+        //if (condition2)
+        //{
+        //    isMoving = false;
+        //    return;
+        //}
+
+        //if (condition3)
+        //{
+        //    SmoothRotate();
+        //    return;
+        //}
+
+        //if (condition4)
         //{
         //    var weapons = Scan(scanRange, lootLayerMask);
         //    if (weapons.Length > 0 && !gettingNearestObject)
@@ -107,20 +213,16 @@ public class AI : MonoBehaviour
         //    }
         //}
 
-        if (condition5)
-        {
-            Move(nearestWeapon.transform.position);
-        }
+        //if (condition5)
+        //{
+        //    Move(nearestWeapon.transform.position);
+        //}
 
-        if (condition6)
-        {
-            nearestWeapon?.Equip(player);
-        }
-
-        //if (player.Weapon == null && remainingDistance <= pickupRange && nearestWeapon != null)
+        //if (condition6)
         //{
         //    nearestWeapon?.Equip(player);
         //}
+        #endregion
     }
 
     private void OnValidate()
@@ -134,6 +236,8 @@ public class AI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, pickupRange);
         Gizmos.color = enemyDetected | lootDetected ? Color.red : Color.blue;
         Gizmos.DrawWireSphere(transform.position, roamRange);
+        Gizmos.color = enemyInRange ? Color.red : Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
     #endregion
 
@@ -156,7 +260,7 @@ public class AI : MonoBehaviour
         if (validPath)
         {
             agent.SetDestination(currentDestination);
-            isMoving = true;
+            rotated = false;
         }
         else
         {
@@ -164,10 +268,16 @@ public class AI : MonoBehaviour
         }
     }
 
+    private void Stop()
+    {
+        rotated = false;
+        agent.SetDestination(transform.position);
+    }
+
     private void RotateRandom()
     {
         desiredRotationY = Mathf.RoundToInt(Random.Range(0, 360));
-        rotating = true;
+        rotated = true;
     }
 
     private void SmoothRotate()
@@ -176,20 +286,18 @@ public class AI : MonoBehaviour
         if (desiredRotationY == currentRotationY)
         {
             Move();
-            rotating = false;
         }
         else
         {
             var r = transform.rotation;
             var tor = Quaternion.Euler(new Vector3(r.x, desiredRotationY, r.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, tor, Time.time * rotationLerp);
-            rotating = true;
         }
     }
 
-    private Collider[] Scan(float radius, int layerMask)
+    private Collider[] Scan<T>(float radius, int layerMask)
     {
-        return Physics.OverlapSphere(transform.position, radius, layerMask).Where(x => x != collider).ToArray() ?? new Collider[0];
+        return Physics.OverlapSphere(transform.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != collider).Distinct().ToArray() ?? new Collider[0];
     }
 
     private void GetNearest<T>(ref T result, Collider[] objects, Vector3 position, int nearestIndex = 0, int index = 0)
@@ -221,9 +329,10 @@ public class AI : MonoBehaviour
 
     private void UpdateStates()
     {
-        lootDetected = Scan(roamRange, lootLayerMask.value).Length > 0 ? true : false;
-        lootInRange = Scan(pickupRange, lootLayerMask.value).Length > 0 ? true : false;
-        enemyDetected = Scan(roamRange, enemyLayerMask.value).Length > 0 ? true : false;
+        lootDetected = Scan<IWeapon>(roamRange, lootLayerMask.value).Length > 0 ? true : false;
+        enemyDetected = Scan<Player>(roamRange, enemyLayerMask.value).Length > 0 ? true : false;
+        lootInRange = Scan<IWeapon>(pickupRange, lootLayerMask.value).Length > 0 ? true : false;
+        enemyInRange = Scan<Player>(attackRange, enemyLayerMask.value).Length > 0 ? true : false;
     }
     #endregion
 }

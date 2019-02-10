@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329587291942348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 40.4, y: 0.5, z: 40.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4227334686124978}
@@ -130,7 +130,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1666856822773904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 15}
+  m_LocalPosition: {x: 0, y: 1, z: -20.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4287426701277600}
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e998675cb7411bd499e8a3361866445f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: 1
+  self: 0
   playerCamera: {fileID: 0}
   weaponHandler: {fileID: 23781182019759180}
   maxHealth: 100
@@ -256,8 +256,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9e19d16590f6c49849c36880b4dffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roamRange: 15
-  scanRange: 5
+  roamRange: 20
+  attackRange: 12
   pickupRange: 2
   rotationLerp: 0.12
   enemyLayerMask:
@@ -266,9 +266,6 @@ MonoBehaviour:
   lootLayerMask:
     serializedVersion: 2
     m_Bits: 2048
-  areaMask:
-    serializedVersion: 2
-    m_Bits: 0
   directionGuide: {fileID: 4562364575655010}
 --- !u!136 &136178946403226604
 CapsuleCollider:
