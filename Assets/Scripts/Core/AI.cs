@@ -23,8 +23,6 @@ public class AI : MonoBehaviour
     private NavMeshAgent agent;
     private Collider collider;
 
-    private List<Player> scannedPlayers;
-    private List<IWeapon> scannedWeapons;
     private Vector3 currentDestination;
     private int remainingDistance;
     private bool gettingNearestObject;
@@ -48,7 +46,7 @@ public class AI : MonoBehaviour
 
         var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
         var condition2 = remainingDistance <= 0 && isMoving && !rotating;
-        var condition3 = player.Weapon == null && !isMoving && rotating && !lootDetected;
+        var condition3 = remainingDistance <= 0 && !isMoving && rotating && !lootDetected;
         var condition4 = player.Weapon == null && nearestWeapon == null && isMoving && lootDetected;
         var condition5 = player.Weapon == null && nearestWeapon != null;
         var condition6 = player.Weapon == null && nearestWeapon != null && lootInRange;
