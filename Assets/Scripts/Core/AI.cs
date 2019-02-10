@@ -45,25 +45,33 @@ public class AI : MonoBehaviour
     {
         UpdateStates();
         remainingDistance = Mathf.RoundToInt(agent.remainingDistance);
-        if (remainingDistance <= 0 && !isMoving && !rotating) 
+
+        var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
+        var condition2 = remainingDistance <= 0 && isMoving && !rotating;
+        var condition3 = player.Weapon == null && !isMoving && rotating && !lootDetected;
+        var condition4 = player.Weapon == null && nearestWeapon == null && isMoving && lootDetected;
+        var condition5 = player.Weapon == null && nearestWeapon != null;
+        var condition6 = player.Weapon == null && nearestWeapon != null && lootInRange;
+
+        if (condition1) 
         {
             RotateRandom();
             return;
         }
 
-        if (remainingDistance <= 0 && isMoving && !rotating)
+        if (condition2)
         {
             isMoving = false;
             return;
         }
 
-        if (player.Weapon == null && !isMoving && rotating && !lootDetected)
+        if (condition3)
         {
             SmoothRotate();
             return;
         }
 
-        if (player.Weapon == null && nearestWeapon == null && isMoving && lootDetected)
+        if (condition4)
         {
             var weapons = Scan(scanRange, lootLayerMask);
             if (weapons.Length > 0 && !gettingNearestObject)
@@ -101,12 +109,12 @@ public class AI : MonoBehaviour
         //    }
         //}
 
-        if (player.Weapon == null && nearestWeapon != null)
+        if (condition5)
         {
             Move(nearestWeapon.transform.position);
         }
 
-        if (player.Weapon == null && nearestWeapon != null && lootInRange)
+        if (condition6)
         {
             nearestWeapon?.Equip(player);
         }
