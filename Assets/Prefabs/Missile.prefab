@@ -142,7 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 25
   projectileSpeed: 20
-  projectileRange: 12
+  projectileRange: 15
   meshRenderer: {fileID: 23517102447500496}
 --- !u!136 &136335739396433208
 CapsuleCollider:

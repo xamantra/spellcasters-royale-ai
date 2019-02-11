@@ -126,7 +126,6 @@ GameObject:
   - component: {fileID: 395554}
   - component: {fileID: 395553}
   - component: {fileID: 395552}
-  - component: {fileID: 395551}
   - component: {fileID: 395550}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -163,20 +162,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &395551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 395548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &395552
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -257,7 +242,6 @@ GameObject:
   - component: {fileID: 7326804}
   - component: {fileID: 7326803}
   - component: {fileID: 7326802}
-  - component: {fileID: 7326801}
   - component: {fileID: 7326800}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -294,20 +278,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &7326801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 7326798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &7326802
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -388,7 +358,6 @@ GameObject:
   - component: {fileID: 8217557}
   - component: {fileID: 8217556}
   - component: {fileID: 8217555}
-  - component: {fileID: 8217554}
   - component: {fileID: 8217553}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -425,20 +394,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &8217554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 8217551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &8217555
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -519,7 +474,6 @@ GameObject:
   - component: {fileID: 17917442}
   - component: {fileID: 17917441}
   - component: {fileID: 17917440}
-  - component: {fileID: 17917439}
   - component: {fileID: 17917438}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -556,20 +510,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &17917439
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 17917436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &17917440
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -650,7 +590,6 @@ GameObject:
   - component: {fileID: 30660038}
   - component: {fileID: 30660037}
   - component: {fileID: 30660036}
-  - component: {fileID: 30660035}
   - component: {fileID: 30660034}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -687,20 +626,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &30660035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 30660032}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &30660036
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -781,7 +706,6 @@ GameObject:
   - component: {fileID: 144480351}
   - component: {fileID: 144480350}
   - component: {fileID: 144480349}
-  - component: {fileID: 144480348}
   - component: {fileID: 144480347}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -818,20 +742,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &144480348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 144480345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &144480349
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -912,7 +822,6 @@ GameObject:
   - component: {fileID: 194739745}
   - component: {fileID: 194739744}
   - component: {fileID: 194739743}
-  - component: {fileID: 194739742}
   - component: {fileID: 194739741}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -949,20 +858,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &194739742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 194739739}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &194739743
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1043,7 +938,6 @@ GameObject:
   - component: {fileID: 224552877}
   - component: {fileID: 224552876}
   - component: {fileID: 224552875}
-  - component: {fileID: 224552874}
   - component: {fileID: 224552873}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1080,20 +974,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &224552874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 224552871}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &224552875
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1174,7 +1054,6 @@ GameObject:
   - component: {fileID: 318687454}
   - component: {fileID: 318687453}
   - component: {fileID: 318687452}
-  - component: {fileID: 318687451}
   - component: {fileID: 318687450}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1211,20 +1090,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &318687451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 318687448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &318687452
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1305,7 +1170,6 @@ GameObject:
   - component: {fileID: 338093807}
   - component: {fileID: 338093806}
   - component: {fileID: 338093805}
-  - component: {fileID: 338093804}
   - component: {fileID: 338093803}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1342,20 +1206,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &338093804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 338093801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &338093805
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1436,7 +1286,6 @@ GameObject:
   - component: {fileID: 347874116}
   - component: {fileID: 347874115}
   - component: {fileID: 347874114}
-  - component: {fileID: 347874113}
   - component: {fileID: 347874112}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1473,20 +1322,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &347874113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 347874110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &347874114
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1567,7 +1402,6 @@ GameObject:
   - component: {fileID: 368011204}
   - component: {fileID: 368011203}
   - component: {fileID: 368011202}
-  - component: {fileID: 368011201}
   - component: {fileID: 368011200}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1604,20 +1438,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &368011201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 368011198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &368011202
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1698,7 +1518,6 @@ GameObject:
   - component: {fileID: 418263641}
   - component: {fileID: 418263640}
   - component: {fileID: 418263639}
-  - component: {fileID: 418263638}
   - component: {fileID: 418263637}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1735,20 +1554,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &418263638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 418263635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &418263639
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1829,7 +1634,6 @@ GameObject:
   - component: {fileID: 529712848}
   - component: {fileID: 529712847}
   - component: {fileID: 529712846}
-  - component: {fileID: 529712845}
   - component: {fileID: 529712844}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1866,20 +1670,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &529712845
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 529712842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &529712846
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1960,7 +1750,6 @@ GameObject:
   - component: {fileID: 537795640}
   - component: {fileID: 537795639}
   - component: {fileID: 537795638}
-  - component: {fileID: 537795637}
   - component: {fileID: 537795636}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -1997,20 +1786,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &537795637
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 537795634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &537795638
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2091,7 +1866,6 @@ GameObject:
   - component: {fileID: 579512868}
   - component: {fileID: 579512867}
   - component: {fileID: 579512866}
-  - component: {fileID: 579512865}
   - component: {fileID: 579512864}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2128,20 +1902,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &579512865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 579512862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &579512866
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2222,7 +1982,6 @@ GameObject:
   - component: {fileID: 583336097}
   - component: {fileID: 583336096}
   - component: {fileID: 583336095}
-  - component: {fileID: 583336094}
   - component: {fileID: 583336093}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2259,20 +2018,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &583336094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 583336091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &583336095
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2353,7 +2098,6 @@ GameObject:
   - component: {fileID: 629027993}
   - component: {fileID: 629027992}
   - component: {fileID: 629027991}
-  - component: {fileID: 629027990}
   - component: {fileID: 629027989}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2390,20 +2134,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &629027990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 629027987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &629027991
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2484,7 +2214,6 @@ GameObject:
   - component: {fileID: 654895129}
   - component: {fileID: 654895128}
   - component: {fileID: 654895127}
-  - component: {fileID: 654895126}
   - component: {fileID: 654895125}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2521,20 +2250,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &654895126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 654895123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &654895127
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2615,7 +2330,6 @@ GameObject:
   - component: {fileID: 663933380}
   - component: {fileID: 663933379}
   - component: {fileID: 663933378}
-  - component: {fileID: 663933377}
   - component: {fileID: 663933376}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2652,20 +2366,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &663933377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 663933374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &663933378
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2746,7 +2446,6 @@ GameObject:
   - component: {fileID: 682218575}
   - component: {fileID: 682218574}
   - component: {fileID: 682218573}
-  - component: {fileID: 682218572}
   - component: {fileID: 682218571}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2783,20 +2482,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &682218572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 682218569}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &682218573
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2877,7 +2562,6 @@ GameObject:
   - component: {fileID: 692062698}
   - component: {fileID: 692062697}
   - component: {fileID: 692062696}
-  - component: {fileID: 692062695}
   - component: {fileID: 692062694}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -2914,20 +2598,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &692062695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 692062692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &692062696
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3091,7 +2761,6 @@ GameObject:
   - component: {fileID: 756295455}
   - component: {fileID: 756295454}
   - component: {fileID: 756295453}
-  - component: {fileID: 756295451}
   - component: {fileID: 756295450}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3128,20 +2797,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &756295451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 756295448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!23 &756295453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3207,7 +2862,6 @@ GameObject:
   - component: {fileID: 827961965}
   - component: {fileID: 827961964}
   - component: {fileID: 827961963}
-  - component: {fileID: 827961962}
   - component: {fileID: 827961961}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3244,20 +2898,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &827961962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 827961959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &827961963
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3338,7 +2978,6 @@ GameObject:
   - component: {fileID: 828197576}
   - component: {fileID: 828197575}
   - component: {fileID: 828197574}
-  - component: {fileID: 828197573}
   - component: {fileID: 828197572}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3375,20 +3014,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &828197573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 828197570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &828197574
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3469,7 +3094,6 @@ GameObject:
   - component: {fileID: 863033184}
   - component: {fileID: 863033183}
   - component: {fileID: 863033182}
-  - component: {fileID: 863033181}
   - component: {fileID: 863033180}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3506,20 +3130,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &863033181
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 863033178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &863033182
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3632,7 +3242,6 @@ GameObject:
   - component: {fileID: 947425837}
   - component: {fileID: 947425836}
   - component: {fileID: 947425835}
-  - component: {fileID: 947425834}
   - component: {fileID: 947425833}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3669,20 +3278,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &947425834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 947425831}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &947425835
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3763,7 +3358,6 @@ GameObject:
   - component: {fileID: 955285179}
   - component: {fileID: 955285178}
   - component: {fileID: 955285177}
-  - component: {fileID: 955285176}
   - component: {fileID: 955285175}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3800,20 +3394,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &955285176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 955285173}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &955285177
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3894,7 +3474,6 @@ GameObject:
   - component: {fileID: 996526243}
   - component: {fileID: 996526242}
   - component: {fileID: 996526241}
-  - component: {fileID: 996526240}
   - component: {fileID: 996526239}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -3931,20 +3510,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &996526240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 996526237}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &996526241
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4025,7 +3590,6 @@ GameObject:
   - component: {fileID: 1001469026}
   - component: {fileID: 1001469025}
   - component: {fileID: 1001469024}
-  - component: {fileID: 1001469023}
   - component: {fileID: 1001469022}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -4062,20 +3626,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1001469023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1001469020}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1001469024
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4156,7 +3706,6 @@ GameObject:
   - component: {fileID: 1048078182}
   - component: {fileID: 1048078181}
   - component: {fileID: 1048078180}
-  - component: {fileID: 1048078179}
   - component: {fileID: 1048078178}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -4193,20 +3742,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1048078179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1048078176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1048078180
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4287,7 +3822,6 @@ GameObject:
   - component: {fileID: 1053321282}
   - component: {fileID: 1053321281}
   - component: {fileID: 1053321280}
-  - component: {fileID: 1053321279}
   - component: {fileID: 1053321278}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -4324,20 +3858,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1053321279
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1053321276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1053321280
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4418,7 +3938,6 @@ GameObject:
   - component: {fileID: 1067575275}
   - component: {fileID: 1067575274}
   - component: {fileID: 1067575273}
-  - component: {fileID: 1067575272}
   - component: {fileID: 1067575271}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -4455,20 +3974,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1067575272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1067575269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1067575273
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4549,7 +4054,6 @@ GameObject:
   - component: {fileID: 1101172978}
   - component: {fileID: 1101172977}
   - component: {fileID: 1101172976}
-  - component: {fileID: 1101172975}
   - component: {fileID: 1101172974}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -4586,20 +4090,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1101172975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1101172972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1101172976
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4834,7 +4324,6 @@ GameObject:
   - component: {fileID: 1189319489}
   - component: {fileID: 1189319488}
   - component: {fileID: 1189319487}
-  - component: {fileID: 1189319486}
   - component: {fileID: 1189319485}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -4871,20 +4360,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1189319486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1189319483}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1189319487
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4965,7 +4440,6 @@ GameObject:
   - component: {fileID: 1199209044}
   - component: {fileID: 1199209043}
   - component: {fileID: 1199209042}
-  - component: {fileID: 1199209041}
   - component: {fileID: 1199209040}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5002,20 +4476,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1199209041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1199209038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1199209042
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5096,7 +4556,6 @@ GameObject:
   - component: {fileID: 1206033545}
   - component: {fileID: 1206033544}
   - component: {fileID: 1206033543}
-  - component: {fileID: 1206033542}
   - component: {fileID: 1206033541}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5133,20 +4592,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1206033542
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1206033539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1206033543
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5227,7 +4672,6 @@ GameObject:
   - component: {fileID: 1227788395}
   - component: {fileID: 1227788394}
   - component: {fileID: 1227788393}
-  - component: {fileID: 1227788392}
   - component: {fileID: 1227788391}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5264,20 +4708,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1227788392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1227788389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1227788393
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5358,7 +4788,6 @@ GameObject:
   - component: {fileID: 1233312768}
   - component: {fileID: 1233312767}
   - component: {fileID: 1233312766}
-  - component: {fileID: 1233312765}
   - component: {fileID: 1233312764}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5395,20 +4824,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1233312765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1233312762}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1233312766
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5489,7 +4904,6 @@ GameObject:
   - component: {fileID: 1297493590}
   - component: {fileID: 1297493589}
   - component: {fileID: 1297493588}
-  - component: {fileID: 1297493587}
   - component: {fileID: 1297493586}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5526,20 +4940,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1297493587
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1297493584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1297493588
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5620,7 +5020,6 @@ GameObject:
   - component: {fileID: 1331526014}
   - component: {fileID: 1331526013}
   - component: {fileID: 1331526012}
-  - component: {fileID: 1331526011}
   - component: {fileID: 1331526010}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5657,20 +5056,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1331526011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1331526008}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1331526012
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5751,7 +5136,6 @@ GameObject:
   - component: {fileID: 1392144882}
   - component: {fileID: 1392144881}
   - component: {fileID: 1392144880}
-  - component: {fileID: 1392144879}
   - component: {fileID: 1392144878}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5788,20 +5172,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1392144879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1392144876}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1392144880
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5882,7 +5252,6 @@ GameObject:
   - component: {fileID: 1423353796}
   - component: {fileID: 1423353795}
   - component: {fileID: 1423353794}
-  - component: {fileID: 1423353793}
   - component: {fileID: 1423353792}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -5919,20 +5288,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1423353793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1423353790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1423353794
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6013,7 +5368,6 @@ GameObject:
   - component: {fileID: 1436488679}
   - component: {fileID: 1436488678}
   - component: {fileID: 1436488677}
-  - component: {fileID: 1436488676}
   - component: {fileID: 1436488675}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6050,20 +5404,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1436488676
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1436488673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1436488677
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6144,7 +5484,6 @@ GameObject:
   - component: {fileID: 1480719941}
   - component: {fileID: 1480719940}
   - component: {fileID: 1480719939}
-  - component: {fileID: 1480719938}
   - component: {fileID: 1480719937}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6181,20 +5520,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1480719938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1480719935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1480719939
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6386,7 +5711,6 @@ GameObject:
   - component: {fileID: 1524766225}
   - component: {fileID: 1524766224}
   - component: {fileID: 1524766223}
-  - component: {fileID: 1524766222}
   - component: {fileID: 1524766221}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6423,20 +5747,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1524766222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1524766219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1524766223
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6546,7 +5856,6 @@ GameObject:
   - component: {fileID: 1579000941}
   - component: {fileID: 1579000940}
   - component: {fileID: 1579000939}
-  - component: {fileID: 1579000938}
   - component: {fileID: 1579000937}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6583,20 +5892,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1579000938
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1579000935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1579000939
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6677,7 +5972,6 @@ GameObject:
   - component: {fileID: 1590712530}
   - component: {fileID: 1590712529}
   - component: {fileID: 1590712528}
-  - component: {fileID: 1590712527}
   - component: {fileID: 1590712526}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6714,20 +6008,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1590712527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1590712524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1590712528
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6808,7 +6088,6 @@ GameObject:
   - component: {fileID: 1594118131}
   - component: {fileID: 1594118130}
   - component: {fileID: 1594118129}
-  - component: {fileID: 1594118128}
   - component: {fileID: 1594118127}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6845,20 +6124,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1594118128
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1594118125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1594118129
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6939,7 +6204,6 @@ GameObject:
   - component: {fileID: 1694620219}
   - component: {fileID: 1694620218}
   - component: {fileID: 1694620217}
-  - component: {fileID: 1694620216}
   - component: {fileID: 1694620215}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -6976,20 +6240,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1694620216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1694620213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1694620217
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7135,7 +6385,6 @@ GameObject:
   - component: {fileID: 1751432029}
   - component: {fileID: 1751432028}
   - component: {fileID: 1751432027}
-  - component: {fileID: 1751432026}
   - component: {fileID: 1751432025}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7172,20 +6421,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1751432026
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1751432023}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1751432027
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7266,7 +6501,6 @@ GameObject:
   - component: {fileID: 1753525787}
   - component: {fileID: 1753525786}
   - component: {fileID: 1753525785}
-  - component: {fileID: 1753525784}
   - component: {fileID: 1753525783}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7303,20 +6537,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1753525784
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1753525781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1753525785
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7397,7 +6617,6 @@ GameObject:
   - component: {fileID: 1783603083}
   - component: {fileID: 1783603082}
   - component: {fileID: 1783603081}
-  - component: {fileID: 1783603080}
   - component: {fileID: 1783603079}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7434,20 +6653,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1783603080
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1783603077}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1783603081
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7528,7 +6733,6 @@ GameObject:
   - component: {fileID: 1791773827}
   - component: {fileID: 1791773826}
   - component: {fileID: 1791773825}
-  - component: {fileID: 1791773824}
   - component: {fileID: 1791773823}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7565,20 +6769,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1791773824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1791773821}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1791773825
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7659,7 +6849,6 @@ GameObject:
   - component: {fileID: 1864274869}
   - component: {fileID: 1864274868}
   - component: {fileID: 1864274867}
-  - component: {fileID: 1864274866}
   - component: {fileID: 1864274865}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7696,20 +6885,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1864274866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1864274863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1864274867
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7790,7 +6965,6 @@ GameObject:
   - component: {fileID: 1882576276}
   - component: {fileID: 1882576275}
   - component: {fileID: 1882576274}
-  - component: {fileID: 1882576273}
   - component: {fileID: 1882576272}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7827,20 +7001,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1882576273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1882576270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1882576274
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7921,7 +7081,6 @@ GameObject:
   - component: {fileID: 1901345126}
   - component: {fileID: 1901345125}
   - component: {fileID: 1901345124}
-  - component: {fileID: 1901345123}
   - component: {fileID: 1901345122}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -7958,20 +7117,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1901345123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1901345120}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1901345124
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8052,7 +7197,6 @@ GameObject:
   - component: {fileID: 1965208320}
   - component: {fileID: 1965208319}
   - component: {fileID: 1965208318}
-  - component: {fileID: 1965208317}
   - component: {fileID: 1965208316}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -8089,20 +7233,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1965208317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1965208314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &1965208318
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8273,7 +7403,6 @@ GameObject:
   - component: {fileID: 2088573230}
   - component: {fileID: 2088573229}
   - component: {fileID: 2088573228}
-  - component: {fileID: 2088573227}
   - component: {fileID: 2088573226}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -8310,20 +7439,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &2088573227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2088573224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &2088573228
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8404,7 +7519,6 @@ GameObject:
   - component: {fileID: 2097771130}
   - component: {fileID: 2097771129}
   - component: {fileID: 2097771128}
-  - component: {fileID: 2097771127}
   - component: {fileID: 2097771126}
   m_Layer: 0
   m_Name: Cube(Clone)
@@ -8441,20 +7555,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &2097771127
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2097771124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minRange: -45
-  maxRange: 45
-  ignoreLayers: []
 --- !u!208 &2097771128
 NavMeshObstacle:
   m_ObjectHideFlags: 0

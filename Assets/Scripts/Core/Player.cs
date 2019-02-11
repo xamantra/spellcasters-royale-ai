@@ -12,11 +12,13 @@ public class Player : MonoBehaviour
     public IWeapon Weapon { get; private set; }
     public int CurrentHealth { get; private set; }
     public int Id { get; private set; }
+    private Material defaultMaterial;
 
     private void Start()
     {
         CurrentHealth = maxHealth;
         Id = Random.Range(10000000, 99999999);
+        defaultMaterial = weaponHandler.sharedMaterial;
     }
 
     private void Update()
@@ -37,6 +39,15 @@ public class Player : MonoBehaviour
     {
         Weapon = weapon;
         weaponHandler.sharedMaterial = weapon.Material;
+    }
+
+    public void UnsetWeapon(IWeapon weapon)
+    {
+        if (Weapon == weapon)
+        {
+            Weapon = null;
+            weaponHandler.sharedMaterial = defaultMaterial;
+        }
     }
 
     public bool CanAttack()

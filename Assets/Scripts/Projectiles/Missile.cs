@@ -58,6 +58,7 @@ public class Missile : MonoBehaviour, IProjectile
             }
             else
             {
+                player.TakeDamage(this);
                 Destroy(gameObject);
                 return;
             }

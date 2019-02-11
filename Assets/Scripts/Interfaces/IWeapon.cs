@@ -4,6 +4,7 @@ public interface IWeapon
 {
     void Attack(Transform spawnPoint, Player attacker);
     void Equip(ref Player player);
+    bool Exists();
     Material Material { get; }
     Transform transform { get; }
 }

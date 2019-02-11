@@ -129,7 +129,8 @@ public class AI : MonoBehaviour
                     {
                         try
                         {
-                            Move(nearestWeapon.transform.position);
+                            if (nearestWeapon.Exists())
+                                Move(nearestWeapon.transform.position);
                         }
                         catch
                         {
@@ -148,6 +149,7 @@ public class AI : MonoBehaviour
                             nearestWeapon = null;
                         }
                     }
+                    #region old code
                     //else if (nearestWeapon == null && !lootDetected)
                     //{
                     //    Move();
@@ -175,6 +177,7 @@ public class AI : MonoBehaviour
                     //        nearestWeapon = null;
                     //    }
                     //}
+                    #endregion
                 }
             }
         }
@@ -193,15 +196,29 @@ public class AI : MonoBehaviour
                     {
                         GetNearest(ref nearestPlayer, enemies, transform.position);
                     }
-                    else if (nearestPlayer != null && !enemyInRange)
+                    else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && !enemyInRange)
                     {
-                        Move(nearestPlayer.transform.position);
+                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                        if (!rotated)
+                        {
+                            RotateRandom();
+                        }
                     }
-                    else if (enemyInRange)
+                    else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
                     {
+                        GetNearest(ref nearestPlayer, enemies, transform.position);
                         Stop();
                         Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
                     }
+                    //else if (nearestPlayer != null && !enemyInRange)
+                    //{
+                    //    Move(nearestPlayer.transform.position);
+                    //}
+                    //else if (nearestPlayer != null && enemyInRange)
+                    //{
+                    //    Stop();
+                    //    Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
+                    //}
                     else
                     {
                         RotateRandom();
@@ -232,7 +249,7 @@ public class AI : MonoBehaviour
             }
         }
 
-        #region temp
+        #region old code
         //var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
         //var condition2 = remainingDistance <= 0 && isMoving && !rotating;
         //var condition3 = remainingDistance <= 0 && !isMoving && rotating && !lootDetected;

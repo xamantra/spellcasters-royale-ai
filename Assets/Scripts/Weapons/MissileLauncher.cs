@@ -23,4 +23,9 @@ public class MissileLauncher : MonoBehaviour, IWeapon
         transform.localPosition = Vector3.zero;
         gameObject.SetActive(false);
     }
+
+    public bool Exists()
+    {
+        return true;
+    }
 }
