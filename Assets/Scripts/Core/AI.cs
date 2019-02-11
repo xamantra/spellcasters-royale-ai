@@ -12,7 +12,15 @@ public class AI : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float rotationLerp;
     [SerializeField] private LayerMask enemyLayerMask;
     [SerializeField] private LayerMask lootLayerMask;
+    [SerializeField] private Transform directionEngine;
     [SerializeField] private Transform directionGuide;
+    [SerializeField] private float directionGuideElevation;
+
+    [Header("Debug Colors")]
+    [SerializeField] private Color detectionColor;
+    [SerializeField] private Color roamColor;
+    [SerializeField] private Color attackRangeColor;
+    [SerializeField] private Color pickupRangeColor;
 
     private bool lootDetected;
     private bool enemyDetected;
@@ -51,6 +59,7 @@ public class AI : MonoBehaviour
                 if (rotated)
                 {
                     SmoothRotate();
+                    Move();
                 }
                 else
                 {
@@ -133,6 +142,7 @@ public class AI : MonoBehaviour
                 if (rotated)
                 {
                     SmoothRotate();
+                    Move();
                 }
                 else
                 {
@@ -232,11 +242,11 @@ public class AI : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = lootInRange ? Color.red : Color.green;
+        Gizmos.color = lootInRange ? detectionColor : pickupRangeColor;
         Gizmos.DrawWireSphere(transform.position, pickupRange);
-        Gizmos.color = enemyDetected | lootDetected ? Color.red : Color.blue;
+        Gizmos.color = enemyDetected | lootDetected ? detectionColor : roamColor;
         Gizmos.DrawWireSphere(transform.position, roamRange);
-        Gizmos.color = enemyInRange ? Color.red : Color.magenta;
+        Gizmos.color = enemyInRange ? detectionColor : attackRangeColor;
         Gizmos.DrawWireSphere(transform.position, attackRange);
     }
     #endregion
@@ -245,7 +255,7 @@ public class AI : MonoBehaviour
     private void Serialize()
     {
         if (directionGuide != null)
-            directionGuide.position = new Vector3(directionGuide.position.x, directionGuide.position.y, roamRange);
+            directionGuide.localPosition = new Vector3(0, directionGuideElevation, roamRange);
         player = GetComponent<Player>();
         agent = GetComponent<NavMeshAgent>();
         collider = GetComponent<Collider>();
@@ -277,22 +287,23 @@ public class AI : MonoBehaviour
     private void RotateRandom()
     {
         desiredRotationY = Mathf.RoundToInt(Random.Range(0, 360));
+        directionEngine.transform.rotation = Quaternion.Euler(0, desiredRotationY, 0);
         rotated = true;
     }
 
     private void SmoothRotate()
     {
-        currentRotationY = Mathf.RoundToInt(transform.localEulerAngles.y);
-        if (desiredRotationY == currentRotationY)
-        {
-            Move();
-        }
-        else
-        {
-            var r = transform.rotation;
-            var tor = Quaternion.Euler(new Vector3(r.x, desiredRotationY, r.z));
-            transform.rotation = Quaternion.Lerp(transform.rotation, tor, Time.time * rotationLerp);
-        }
+        //currentRotationY = Mathf.RoundToInt(transform.localEulerAngles.y);
+        //if (desiredRotationY == currentRotationY)
+        //{
+        //    Move();
+        //}
+        //else
+        //{
+        //    var r = transform.rotation;
+        //    var tor = Quaternion.Euler(new Vector3(r.x, desiredRotationY, r.z));
+        //    transform.rotation = Quaternion.Lerp(transform.rotation, tor, Time.time * rotationLerp);
+        //}
     }
 
     private Collider[] Scan<T>(float radius, int layerMask)

@@ -4,10 +4,10 @@
 public class Player : MonoBehaviour
 {
     [SerializeField] private bool self;
-    [SerializeField] private Transform playerCamera;
     [SerializeField] private MeshRenderer weaponHandler;
     [SerializeField, Range(10, 100)] private int maxHealth;
 
+    private Transform playerCamera;
     public IWeapon Weapon { get; private set; }
     public int CurrentHealth { get; private set; }
 
@@ -22,6 +22,12 @@ public class Player : MonoBehaviour
         {
             playerCamera.position = transform.position;
         }
+    }
+
+    public void SetAsSelf(Transform camera)
+    {
+        playerCamera = camera;
+        self = true;
     }
 
     public void SetWeapon(IWeapon weapon)

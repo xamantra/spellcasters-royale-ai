@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 33372190598301230}
   - component: {fileID: 65219070068765832}
   - component: {fileID: 23718659878466428}
-  - component: {fileID: 208193096568750426}
   - component: {fileID: 114968272283288342}
   - component: {fileID: 54820690583888224}
   m_Layer: 0
@@ -126,18 +125,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
---- !u!208 &208193096568750426
-NavMeshObstacle:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1026303202041406}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0
-  m_Carve: 1
-  m_CarveOnlyStationary: 0
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0
