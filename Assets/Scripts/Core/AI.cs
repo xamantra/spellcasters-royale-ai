@@ -10,6 +10,7 @@ public class AI : MonoBehaviour
     [SerializeField, Range(5f, 15f)] private float attackRange;
     [SerializeField, Range(2f, 4f)] private float pickupRange;
     [SerializeField, Range(0f, 1f)] private float rotationLerp;
+    [SerializeField, Range(1f, 3f)] private float attackInterval;
     [SerializeField] private LayerMask enemyLayerMask;
     [SerializeField] private LayerMask lootLayerMask;
     [SerializeField] private Transform directionEngine;
@@ -22,22 +23,24 @@ public class AI : MonoBehaviour
     [SerializeField] private Color attackRangeColor;
     [SerializeField] private Color pickupRangeColor;
 
+    private Player player;
+    private NavMeshAgent agent;
+    private Collider collider;
+    private Player nearestPlayer;
+    private IWeapon nearestWeapon;
+
     private bool lootDetected;
     private bool enemyDetected;
     private bool lootInRange;
     private bool enemyInRange;
-    private Player player;
-    private NavMeshAgent agent;
-    private Collider collider;
-
     private Vector3 currentDestination;
     private float remainingDistance;
+    private bool hasNearestWeapon;
     private bool gettingNearestObject;
     private int desiredRotationY;
     private bool rotated;
     private int currentRotationY;
-    private IWeapon nearestWeapon;
-    private Player nearestPlayer;
+    private float attackIntervalTimer;
     #endregion
 
     #region unity methods
@@ -50,6 +53,16 @@ public class AI : MonoBehaviour
     {
         UpdateStates();
         remainingDistance = agent.remainingDistance;
+        hasNearestWeapon = nearestWeapon != null;
+
+        if (attackIntervalTimer <= 0)
+        {
+            attackIntervalTimer = attackInterval;
+        }
+        else
+        {
+            attackIntervalTimer -= Time.deltaTime;
+        }
 
         if (player.Weapon == null)
         {
@@ -58,7 +71,6 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    SmoothRotate();
                     Move();
                 }
                 else
@@ -108,6 +120,15 @@ public class AI : MonoBehaviour
                     {
                         GetNearest(ref nearestWeapon, weapons, transform.position);
                     }
+                    else if (nearestWeapon != null && !lootDetected && !lootInRange)
+                    {
+                        nearestWeapon = null;
+                        Move();
+                    }
+                    else if (nearestWeapon == null && !lootDetected)
+                    {
+                        Move();
+                    }
                     else if (nearestWeapon != null && !lootInRange)
                     {
                         try
@@ -141,7 +162,6 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    SmoothRotate();
                     Move();
                 }
                 else
@@ -157,6 +177,7 @@ public class AI : MonoBehaviour
                     else if (enemyInRange)
                     {
                         Stop();
+                        Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
                     }
                     else
                     {
@@ -282,6 +303,16 @@ public class AI : MonoBehaviour
     {
         rotated = false;
         agent.SetDestination(transform.position);
+    }
+
+    private void Attack(ref Player enemy, ref Player self, ref float attackIntervalTimer)
+    {
+        var canAttack = enemy != null && self != null && self.CanAttack();
+        if (canAttack && attackIntervalTimer <= 0)
+        {
+            transform.LookAt(enemy.transform);
+            self.Attack();
+        }
     }
 
     private void RotateRandom()

@@ -132,7 +132,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &395549
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &395552
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -262,7 +263,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7326799
@@ -306,6 +307,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &7326802
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -392,7 +394,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8217552
@@ -436,6 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &8217555
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -522,7 +525,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &17917437
@@ -566,6 +569,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &17917440
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -652,7 +656,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &30660033
@@ -696,6 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &30660036
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -782,7 +787,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &144480346
@@ -826,6 +831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &144480349
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -912,7 +918,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &194739740
@@ -956,6 +962,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &194739743
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1042,7 +1049,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &224552872
@@ -1086,6 +1093,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &224552875
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1172,7 +1180,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &318687449
@@ -1216,6 +1224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &318687452
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1302,7 +1311,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &338093802
@@ -1346,6 +1355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &338093805
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1432,7 +1442,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &347874111
@@ -1476,6 +1486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &347874114
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1562,7 +1573,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &368011199
@@ -1606,6 +1617,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &368011202
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1692,7 +1704,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &418263636
@@ -1736,6 +1748,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &418263639
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1822,7 +1835,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &529712843
@@ -1866,6 +1879,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &529712846
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -1952,7 +1966,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &537795635
@@ -1996,6 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &537795638
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2082,7 +2097,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &579512863
@@ -2126,6 +2141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &579512866
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2212,7 +2228,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &583336092
@@ -2256,6 +2272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &583336095
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2342,7 +2359,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &629027988
@@ -2386,6 +2403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &629027991
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2472,7 +2490,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &654895124
@@ -2516,6 +2534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &654895127
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2602,7 +2621,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &663933375
@@ -2646,6 +2665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &663933378
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2732,7 +2752,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &682218570
@@ -2776,6 +2796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &682218573
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -2862,7 +2883,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &692062693
@@ -2906,6 +2927,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &692062696
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3075,7 +3097,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &756295449
@@ -3119,6 +3141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!23 &756295453
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3190,7 +3213,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &827961960
@@ -3234,6 +3257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &827961963
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3320,7 +3344,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &828197571
@@ -3364,6 +3388,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &828197574
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3450,7 +3475,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &863033179
@@ -3494,6 +3519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &863033182
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3612,7 +3638,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &947425832
@@ -3656,6 +3682,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &947425835
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3742,7 +3769,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &955285174
@@ -3786,6 +3813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &955285177
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -3872,7 +3900,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &996526238
@@ -3916,6 +3944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &996526241
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4002,7 +4031,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1001469021
@@ -4046,6 +4075,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1001469024
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4132,7 +4162,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1048078177
@@ -4176,6 +4206,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1048078180
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4262,7 +4293,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1053321277
@@ -4306,6 +4337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1053321280
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4392,7 +4424,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1067575270
@@ -4436,6 +4468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1067575273
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4522,7 +4555,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1101172973
@@ -4566,6 +4599,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1101172976
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4806,7 +4840,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1189319484
@@ -4850,6 +4884,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1189319487
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -4936,7 +4971,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1199209039
@@ -4980,6 +5015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1199209042
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5066,7 +5102,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1206033540
@@ -5110,6 +5146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1206033543
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5196,7 +5233,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1227788390
@@ -5240,6 +5277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1227788393
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5326,7 +5364,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1233312763
@@ -5370,6 +5408,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1233312766
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5456,7 +5495,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1297493585
@@ -5500,6 +5539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1297493588
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5586,7 +5626,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1331526009
@@ -5630,6 +5670,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1331526012
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5716,7 +5757,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1392144877
@@ -5760,6 +5801,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1392144880
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5846,7 +5888,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1423353791
@@ -5890,6 +5932,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1423353794
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5976,7 +6019,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1436488674
@@ -6020,6 +6063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1436488677
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6106,7 +6150,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1480719936
@@ -6150,6 +6194,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1480719939
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6347,7 +6392,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1524766220
@@ -6391,6 +6436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1524766223
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6506,7 +6552,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1579000936
@@ -6550,6 +6596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1579000939
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6636,7 +6683,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1590712525
@@ -6680,6 +6727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1590712528
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6766,7 +6814,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1594118126
@@ -6810,6 +6858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1594118129
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -6896,7 +6945,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1694620214
@@ -6940,6 +6989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1694620217
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7091,7 +7141,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1751432024
@@ -7135,6 +7185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1751432027
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7221,7 +7272,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1753525782
@@ -7265,6 +7316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1753525785
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7351,7 +7403,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1783603078
@@ -7395,6 +7447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1783603081
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7481,7 +7534,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1791773822
@@ -7525,6 +7578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1791773825
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7611,7 +7665,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1864274864
@@ -7655,6 +7709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1864274867
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7741,7 +7796,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1882576271
@@ -7785,6 +7840,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1882576274
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7871,7 +7927,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1901345121
@@ -7915,6 +7971,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1901345124
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8001,7 +8058,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1965208315
@@ -8045,6 +8102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &1965208318
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8155,7 +8213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 1492790750642334, guid: ab7c005083aad3a48ad3b50c3efb7e53, type: 2}
-  count: 5
+  count: 10
   minRange: -45
   maxRange: 45
 --- !u!1 &2069639063
@@ -8200,7 +8258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selfCamera: {fileID: 1562841863}
   prefab: {fileID: 114020926920206764, guid: be09378b1895d294187932091d4c90d0, type: 2}
-  count: 5
+  count: 10
   minRange: -45
   maxRange: 45
 --- !u!1 &2088573224
@@ -8221,7 +8279,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2088573225
@@ -8265,6 +8323,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &2088573228
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -8351,7 +8410,7 @@ GameObject:
   m_Name: Cube(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
+  m_NavMeshLayer: 1
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2097771125
@@ -8395,6 +8454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  ignoreLayers: []
 --- !u!208 &2097771128
 NavMeshObstacle:
   m_ObjectHideFlags: 0

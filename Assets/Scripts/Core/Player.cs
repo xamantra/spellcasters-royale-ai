@@ -5,15 +5,18 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private bool self;
     [SerializeField] private MeshRenderer weaponHandler;
+    [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField, Range(10, 100)] private int maxHealth;
 
     private Transform playerCamera;
     public IWeapon Weapon { get; private set; }
     public int CurrentHealth { get; private set; }
+    public int Id { get; private set; }
 
     private void Start()
     {
         CurrentHealth = maxHealth;
+        Id = Random.Range(10000000, 99999999);
     }
 
     private void Update()
@@ -34,6 +37,16 @@ public class Player : MonoBehaviour
     {
         Weapon = weapon;
         weaponHandler.sharedMaterial = weapon.Material;
+    }
+
+    public bool CanAttack()
+    {
+        return Weapon != null;
+    }
+
+    public void Attack()
+    {
+        Weapon?.Attack(projectileSpawnPoint, this);
     }
 
     public void TakeDamage(IProjectile projectile)

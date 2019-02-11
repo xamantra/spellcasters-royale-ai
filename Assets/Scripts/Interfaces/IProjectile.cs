@@ -3,5 +3,7 @@
 public interface IProjectile
 {
     int Damage { get; }
-    void Spawn(Vector3 position, Quaternion rotation);
+    GameObject gameObject { get; }
+    MeshRenderer MeshRenderer { get; }
+    void Spawn(Transform spawnPoint, ref Player owner, Material material);
 }

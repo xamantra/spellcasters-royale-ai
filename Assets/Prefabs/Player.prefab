@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4227334686124978}
   - component: {fileID: 33683194004705622}
-  - component: {fileID: 136178946403226604}
   - component: {fileID: 23476433887570462}
   m_Layer: 0
   m_Name: Body
@@ -38,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4101792326184714}
   - component: {fileID: 33555254393654024}
-  - component: {fileID: 65520067597097978}
   - component: {fileID: 23781182019759180}
   m_Layer: 0
   m_Name: WeaponHandler
@@ -59,7 +57,7 @@ GameObject:
   - component: {fileID: 136981142961210680}
   - component: {fileID: 114020926920206764}
   - component: {fileID: 114356811306315464}
-  - component: {fileID: 114215520145932810}
+  - component: {fileID: 114022287804990904}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -77,6 +75,21 @@ GameObject:
   - component: {fileID: 4641753885652330}
   m_Layer: 10
   m_Name: DirectionEngine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1649936790436398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4708020435454654}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -131,11 +144,12 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1329587291942348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.997341, y: 0.5, z: -6.4374533}
+  m_LocalPosition: {x: 8.261645, y: 0.5, z: -7.8801107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4227334686124978}
   - {fileID: 4641753885652330}
+  - {fileID: 4708020435454654}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -165,6 +179,19 @@ Transform:
   - {fileID: 4562364575655010}
   m_Father: {fileID: 4287426701277600}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4708020435454654
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1649936790436398}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.8, z: 0.7001109}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4287426701277600}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23476433887570462
 MeshRenderer:
@@ -248,18 +275,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1136201014388190}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65520067597097978
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1311942254491722}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114020926920206764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -273,8 +288,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   self: 0
   weaponHandler: {fileID: 23781182019759180}
+  projectileSpawnPoint: {fileID: 4708020435454654}
   maxHealth: 100
---- !u!114 &114215520145932810
+--- !u!114 &114022287804990904
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -282,11 +298,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1329587291942348}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 378b3bf8a490ce44b937d4fc540540f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 61a30551bdfa49f489a40ced9eed35c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minRange: -45
   maxRange: 45
+  agent: {fileID: 195945097686243268}
 --- !u!114 &114356811306315464
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -302,6 +319,7 @@ MonoBehaviour:
   attackRange: 12
   pickupRange: 2
   rotationLerp: 0.12
+  attackInterval: 2
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -315,19 +333,6 @@ MonoBehaviour:
   roamColor: {r: 0.11764705, g: 0.11764705, b: 0.11764705, a: 1}
   attackRangeColor: {r: 0.5147059, g: 0.5147059, b: 0.5147059, a: 1}
   pickupRangeColor: {r: 1, g: 1, b: 1, a: 1}
---- !u!136 &136178946403226604
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1136201014388190}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136981142961210680
 CapsuleCollider:
   m_ObjectHideFlags: 1
