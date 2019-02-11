@@ -125,11 +125,7 @@ public class AI : MonoBehaviour
                         nearestWeapon = null;
                         Move();
                     }
-                    else if (nearestWeapon == null && !lootDetected)
-                    {
-                        Move();
-                    }
-                    else if (nearestWeapon != null && !lootInRange)
+                    else if (nearestWeapon != null && lootDetected && !lootInRange)
                     {
                         try
                         {
@@ -140,7 +136,7 @@ public class AI : MonoBehaviour
                             nearestWeapon = null;
                         }
                     }
-                    else if (lootInRange)
+                    else if (nearestWeapon != null && lootDetected && lootInRange)
                     {
                         Stop();
                         try
@@ -152,6 +148,33 @@ public class AI : MonoBehaviour
                             nearestWeapon = null;
                         }
                     }
+                    //else if (nearestWeapon == null && !lootDetected)
+                    //{
+                    //    Move();
+                    //}
+                    //else if (nearestWeapon != null && !lootInRange)
+                    //{
+                    //    try
+                    //    {
+                    //        Move(nearestWeapon.transform.position);
+                    //    }
+                    //    catch
+                    //    {
+                    //        nearestWeapon = null;
+                    //    }
+                    //}
+                    //else if (lootInRange)
+                    //{
+                    //    Stop();
+                    //    try
+                    //    {
+                    //        nearestWeapon.Equip(ref player);
+                    //    }
+                    //    catch
+                    //    {
+                    //        nearestWeapon = null;
+                    //    }
+                    //}
                 }
             }
         }
