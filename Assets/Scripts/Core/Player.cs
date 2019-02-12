@@ -3,7 +3,6 @@
 [RequireComponent(typeof(CapsuleCollider))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private bool self;
     [SerializeField] private MeshRenderer weaponHandler;
     [SerializeField] private Transform projectileSpawnPoint;
     [SerializeField, Range(10, 100)] private int maxHealth;
@@ -19,20 +18,6 @@ public class Player : MonoBehaviour
         CurrentHealth = maxHealth;
         Id = Random.Range(10000000, 99999999);
         defaultMaterial = weaponHandler.sharedMaterial;
-    }
-
-    private void Update()
-    {
-        if (self)
-        {
-            playerCamera.position = transform.position;
-        }
-    }
-
-    public void SetAsSelf(Transform camera)
-    {
-        playerCamera = camera;
-        self = true;
     }
 
     public void SetWeapon(IWeapon weapon)
