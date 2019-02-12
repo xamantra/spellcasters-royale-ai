@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public int CurrentHealth { get; private set; }
     public int Id { get; private set; }
     private Material defaultMaterial;
+    public bool IsSelected { get; private set; }
 
     private void Start()
     {
@@ -43,6 +44,16 @@ public class Player : MonoBehaviour
     public void Attack()
     {
         Weapon?.Attack(projectileSpawnPoint, this);
+    }
+
+    public void Select()
+    {
+        IsSelected = true;
+    }
+
+    public void Deselect()
+    {
+        IsSelected = false;
     }
 
     public void TakeDamage(IProjectile projectile)
