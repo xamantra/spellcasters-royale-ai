@@ -365,21 +365,6 @@ public class AI : MonoBehaviour
         rotated = true;
     }
 
-    private void SmoothRotate()
-    {
-        //currentRotationY = Mathf.RoundToInt(transform.localEulerAngles.y);
-        //if (desiredRotationY == currentRotationY)
-        //{
-        //    Move();
-        //}
-        //else
-        //{
-        //    var r = transform.rotation;
-        //    var tor = Quaternion.Euler(new Vector3(r.x, desiredRotationY, r.z));
-        //    transform.rotation = Quaternion.Lerp(transform.rotation, tor, Time.time * rotationLerp);
-        //}
-    }
-
     private void UpdateStates()
     {
         lootDetected = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value).Length > 0 ? true : false;
