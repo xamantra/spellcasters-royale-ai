@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
-  projectileSpeed: 20
+  projectileSpeed: 30
   projectileRange: 15
   meshRenderer: {fileID: 23517102447500496}
 --- !u!136 &136335739396433208
