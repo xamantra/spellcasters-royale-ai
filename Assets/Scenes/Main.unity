@@ -7343,7 +7343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons:
   - {fileID: 1492790750642334, guid: ab7c005083aad3a48ad3b50c3efb7e53, type: 2}
-  count: 10
+  count: 20
   minRange: -45
   maxRange: 45
 --- !u!1 &2069639063
