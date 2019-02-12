@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Player), typeof(NavMeshAgent), typeof(CapsuleCollider))]
@@ -41,11 +40,13 @@ public class AI : MonoBehaviour
     private bool rotated;
     private int currentRotationY;
     private float attackIntervalTimer;
+    private System.Action findDirection;
     #endregion
 
     #region unity methods
     private void Start()
     {
+        findDirection = () => { Direction.SelectDirectionRandom(ref desiredRotationY, ref directionEngine, ref rotated); };
         Serialize();
     }
 
@@ -71,7 +72,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection);
                 }
                 else
                 {
@@ -83,7 +84,7 @@ public class AI : MonoBehaviour
                     {
                         try
                         {
-                            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, nearestWeapon.transform.position);
+                            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestWeapon.transform.position);
                         }
                         catch
                         {
@@ -92,7 +93,7 @@ public class AI : MonoBehaviour
                     }
                     else if (lootInRange)
                     {
-                        Stop();
+                        Actions.Stop(ref agent, ref rotated, transform);
                         try
                         {
                             nearestWeapon.Equip(ref player);
@@ -104,7 +105,7 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        SelectDirectionRandom();
+                        findDirection?.Invoke();
                     }
                 }
             }
@@ -112,7 +113,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, transform.position);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, transform.position);
                 }
                 else
                 {
@@ -123,14 +124,14 @@ public class AI : MonoBehaviour
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
                         nearestWeapon = null;
-                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom);
+                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection);
                     }
                     else if (nearestWeapon != null && lootDetected && !lootInRange)
                     {
                         try
                         {
                             if (nearestWeapon.Exists())
-                                NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, nearestWeapon.transform.position);
+                                NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestWeapon.transform.position);
                             else
                                 nearestWeapon = null;
                         }
@@ -141,7 +142,7 @@ public class AI : MonoBehaviour
                     }
                     else if (nearestWeapon != null && lootDetected && lootInRange)
                     {
-                        Stop();
+                        Actions.Stop(ref agent, ref rotated, transform);
                         try
                         {
                             nearestWeapon.Equip(ref player);
@@ -191,7 +192,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection);
                 }
                 else
                 {
@@ -204,14 +205,14 @@ public class AI : MonoBehaviour
                         ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
                         if (!rotated)
                         {
-                            SelectDirectionRandom();
+                            findDirection?.Invoke();
                         }
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
                     {
                         ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
-                        Stop();
-                        Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
+                        Actions.Stop(ref agent, ref rotated, transform);
+                        Actions.Attack(ref nearestPlayer, ref player, ref attackIntervalTimer, transform);
                     }
                     //else if (nearestPlayer != null && !enemyInRange)
                     //{
@@ -224,7 +225,7 @@ public class AI : MonoBehaviour
                     //}
                     else
                     {
-                        SelectDirectionRandom();
+                        findDirection?.Invoke();
                     }
                 }
             }
@@ -232,7 +233,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, transform.position);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, transform.position);
                 }
                 else
                 {
@@ -242,11 +243,11 @@ public class AI : MonoBehaviour
                     }
                     else if (nearestPlayer != null && !enemyInRange)
                     {
-                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, nearestPlayer.transform.position);
+                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestPlayer.transform.position);
                     }
                     else if (enemyInRange)
                     {
-                        Stop();
+                        Actions.Stop(ref agent, ref rotated, transform);
                     }
                 }
             }
@@ -327,29 +328,6 @@ public class AI : MonoBehaviour
     #endregion
 
     #region AI methods
-    private void Stop()
-    {
-        rotated = false;
-        agent.SetDestination(transform.position);
-    }
-
-    private void Attack(ref Player enemy, ref Player self, ref float attackIntervalTimer)
-    {
-        var canAttack = enemy != null && self != null && self.CanAttack();
-        if (canAttack && attackIntervalTimer <= 0)
-        {
-            transform.LookAt(enemy.transform);
-            self.Attack();
-        }
-    }
-
-    private void SelectDirectionRandom()
-    {
-        desiredRotationY = Mathf.RoundToInt(Random.Range(0, 360));
-        directionEngine.transform.rotation = Quaternion.Euler(0, desiredRotationY, 0);
-        rotated = true;
-    }
-
     private void UpdateStates()
     {
         lootDetected = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value).Length > 0 ? true : false;
