@@ -77,7 +77,7 @@ public class AI : MonoBehaviour
                 {
                     if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                     {
-                        GetNearestObject(ref nearestWeapon, weapons, transform.position);
+                        ObjectSearch.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position);
                     }
                     else if (nearestWeapon != null && !lootInRange)
                     {
@@ -118,7 +118,7 @@ public class AI : MonoBehaviour
                 {
                     if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                     {
-                        GetNearestObject(ref nearestWeapon, weapons, transform.position);
+                        ObjectSearch.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position);
                     }
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
@@ -197,11 +197,11 @@ public class AI : MonoBehaviour
                 {
                     if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
                     {
-                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
+                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && !enemyInRange)
                     {
-                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
+                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
                         if (!rotated)
                         {
                             RotateRandom();
@@ -209,7 +209,7 @@ public class AI : MonoBehaviour
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
                     {
-                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
+                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
                         Stop();
                         Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
                     }
@@ -238,7 +238,7 @@ public class AI : MonoBehaviour
                 {
                     if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
                     {
-                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
+                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
                     }
                     else if (nearestPlayer != null && !enemyInRange)
                     {
@@ -383,33 +383,6 @@ public class AI : MonoBehaviour
     private Collider[] Scan<T>(float radius, int layerMask)
     {
         return Physics.OverlapSphere(transform.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != collider).Distinct().ToArray() ?? new Collider[0];
-    }
-
-    private void GetNearestObject<T>(ref T result, Collider[] objects, Vector3 position, int nearestIndex = 0, int index = 0)
-    {
-        if (objects.Length == 0) return;
-        gettingNearestObject = true;
-        var nearest = objects[nearestIndex];
-        var i = index;
-        if (i == objects.Length - 1)
-        {
-            result = nearest.GetComponent<T>();
-            gettingNearestObject = false;
-            return;
-        }
-        else
-        {
-            var nearestDistance = Mathf.Abs(Vector3.Distance(position, nearest.transform.position));
-            var currentDistance = Mathf.Abs(Vector3.Distance(position, objects[i].transform.position));
-            if (currentDistance < nearestDistance)
-            {
-                GetNearestObject(ref result, objects, position, i, index + 1);
-            }
-            else
-            {
-                GetNearestObject(ref result, objects, position, nearestIndex, index + 1);
-            }
-        }
     }
 
     private void UpdateStates()
