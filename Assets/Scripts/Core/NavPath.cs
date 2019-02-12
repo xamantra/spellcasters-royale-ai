@@ -15,7 +15,6 @@ public static class NavPath
         }
         else
         {
-            //SelectDirectionRandom();
             failCallBack?.Invoke();
         }
     }
