@@ -26,6 +26,6 @@ public class MissileLauncher : MonoBehaviour, IWeapon
 
     public bool Exists()
     {
-        return true;
+        return gameObject.activeSelf;
     }
 }
