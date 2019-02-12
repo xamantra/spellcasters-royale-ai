@@ -330,10 +330,10 @@ public class AI : MonoBehaviour
     #region AI methods
     private void UpdateStates()
     {
-        lootDetected = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value).Length > 0 ? true : false;
-        enemyDetected = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value).Length > 0 ? true : false;
-        lootInRange = Sensor.Scan<IWeapon>(transform, collider, pickupRange, lootLayerMask.value).Length > 0 ? true : false;
-        enemyInRange = Sensor.Scan<Player>(transform, collider, attackRange, enemyLayerMask.value).Length > 0 ? true : false;
+        lootDetected = Sensor.InRange<IWeapon>(transform, collider, roamRange, lootLayerMask);
+        enemyDetected = Sensor.InRange<Player>(transform, collider, roamRange, enemyLayerMask);
+        lootInRange = Sensor.InRange<IWeapon>(transform, collider, pickupRange, lootLayerMask);
+        enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
     }
     #endregion
 }
