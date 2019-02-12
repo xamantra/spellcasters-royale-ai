@@ -77,7 +77,7 @@ public class AI : MonoBehaviour
                 {
                     if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                     {
-                        GetNearest(ref nearestWeapon, weapons, transform.position);
+                        GetNearestObject(ref nearestWeapon, weapons, transform.position);
                     }
                     else if (nearestWeapon != null && !lootInRange)
                     {
@@ -118,7 +118,7 @@ public class AI : MonoBehaviour
                 {
                     if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                     {
-                        GetNearest(ref nearestWeapon, weapons, transform.position);
+                        GetNearestObject(ref nearestWeapon, weapons, transform.position);
                     }
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
@@ -132,7 +132,7 @@ public class AI : MonoBehaviour
                             if (nearestWeapon.Exists())
                                 Move(nearestWeapon.transform.position);
                             else
-                            nearestWeapon = null;
+                                nearestWeapon = null;
                         }
                         catch
                         {
@@ -197,11 +197,11 @@ public class AI : MonoBehaviour
                 {
                     if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
                     {
-                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && !enemyInRange)
                     {
-                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
                         if (!rotated)
                         {
                             RotateRandom();
@@ -209,7 +209,7 @@ public class AI : MonoBehaviour
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
                     {
-                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
                         Stop();
                         Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
                     }
@@ -238,7 +238,7 @@ public class AI : MonoBehaviour
                 {
                     if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
                     {
-                        GetNearest(ref nearestPlayer, enemies, transform.position);
+                        GetNearestObject(ref nearestPlayer, enemies, transform.position);
                     }
                     else if (nearestPlayer != null && !enemyInRange)
                     {
@@ -385,7 +385,7 @@ public class AI : MonoBehaviour
         return Physics.OverlapSphere(transform.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != collider).Distinct().ToArray() ?? new Collider[0];
     }
 
-    private void GetNearest<T>(ref T result, Collider[] objects, Vector3 position, int nearestIndex = 0, int index = 0)
+    private void GetNearestObject<T>(ref T result, Collider[] objects, Vector3 position, int nearestIndex = 0, int index = 0)
     {
         if (objects.Length == 0) return;
         gettingNearestObject = true;
@@ -399,15 +399,15 @@ public class AI : MonoBehaviour
         }
         else
         {
-            var candidateDistance = Mathf.Abs(Vector3.Distance(position, nearest.transform.position));
+            var nearestDistance = Mathf.Abs(Vector3.Distance(position, nearest.transform.position));
             var currentDistance = Mathf.Abs(Vector3.Distance(position, objects[i].transform.position));
-            if (currentDistance < candidateDistance)
+            if (currentDistance < nearestDistance)
             {
-                GetNearest(ref result, objects, position, i, index + 1);
+                GetNearestObject(ref result, objects, position, i, index + 1);
             }
             else
             {
-                GetNearest(ref result, objects, position, nearestIndex, index + 1);
+                GetNearestObject(ref result, objects, position, nearestIndex, index + 1);
             }
         }
     }
