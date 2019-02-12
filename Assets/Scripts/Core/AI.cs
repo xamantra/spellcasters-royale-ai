@@ -131,6 +131,8 @@ public class AI : MonoBehaviour
                         {
                             if (nearestWeapon.Exists())
                                 Move(nearestWeapon.transform.position);
+                            else
+                            nearestWeapon = null;
                         }
                         catch
                         {
