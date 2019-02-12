@@ -157,35 +157,6 @@ public class AI : MonoBehaviour
                             nearestWeapon = null;
                         }
                     }
-                    #region old code
-                    //else if (nearestWeapon == null && !lootDetected)
-                    //{
-                    //    Move();
-                    //}
-                    //else if (nearestWeapon != null && !lootInRange)
-                    //{
-                    //    try
-                    //    {
-                    //        Move(nearestWeapon.transform.position);
-                    //    }
-                    //    catch
-                    //    {
-                    //        nearestWeapon = null;
-                    //    }
-                    //}
-                    //else if (lootInRange)
-                    //{
-                    //    Stop();
-                    //    try
-                    //    {
-                    //        nearestWeapon.Equip(ref player);
-                    //    }
-                    //    catch
-                    //    {
-                    //        nearestWeapon = null;
-                    //    }
-                    //}
-                    #endregion
                 }
             }
         }
@@ -219,15 +190,6 @@ public class AI : MonoBehaviour
                         Actions.Stop(ref agent, ref rotated, transform);
                         Actions.Attack(ref nearestPlayer, ref player, ref attackIntervalTimer, transform);
                     }
-                    //else if (nearestPlayer != null && !enemyInRange)
-                    //{
-                    //    Move(nearestPlayer.transform.position);
-                    //}
-                    //else if (nearestPlayer != null && enemyInRange)
-                    //{
-                    //    Stop();
-                    //    Attack(ref nearestPlayer, ref player, ref attackIntervalTimer);
-                    //}
                     else
                     {
                         findDirection?.Invoke();
@@ -257,52 +219,6 @@ public class AI : MonoBehaviour
                 }
             }
         }
-
-        #region old code
-        //var condition1 = remainingDistance <= 0 && !isMoving && !rotating;
-        //var condition2 = remainingDistance <= 0 && isMoving && !rotating;
-        //var condition3 = remainingDistance <= 0 && !isMoving && rotating && !lootDetected;
-        //var condition4 = player.Weapon == null && nearestWeapon == null && isMoving && lootDetected;
-        //var condition5 = player.Weapon == null && nearestWeapon != null;
-        //var condition6 = player.Weapon == null && nearestWeapon != null && lootInRange;
-
-        //if (condition1)
-        //{
-        //    RotateRandom();
-        //    return;
-        //}
-
-        //if (condition2)
-        //{
-        //    isMoving = false;
-        //    return;
-        //}
-
-        //if (condition3)
-        //{
-        //    SmoothRotate();
-        //    return;
-        //}
-
-        //if (condition4)
-        //{
-        //    var weapons = Scan(scanRange, lootLayerMask);
-        //    if (weapons.Length > 0 && !gettingNearestObject)
-        //    {
-        //        GetNearest(ref nearestWeapon, weapons, transform.position);
-        //    }
-        //}
-
-        //if (condition5)
-        //{
-        //    Move(nearestWeapon.transform.position);
-        //}
-
-        //if (condition6)
-        //{
-        //    nearestWeapon?.Equip(player);
-        //}
-        #endregion
     }
 
     private void OnValidate()
