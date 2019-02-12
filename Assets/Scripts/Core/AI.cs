@@ -42,7 +42,7 @@ public class AI : MonoBehaviour
     private bool hasNearestWeapon;
     private bool gettingNearestObject;
     private int desiredRotationY;
-    private bool rotated;
+    private bool directionSelected;
     private int currentRotationY;
     private float attackIntervalTimer;
     private Collider[] scannedWeapons;
@@ -76,7 +76,7 @@ public class AI : MonoBehaviour
             scannedWeapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
             if (remainingDistance <= 0) // no weapon and not moving
             {
-                if (rotated)
+                if (directionSelected)
                 {
                     Move();
                 }
@@ -99,7 +99,7 @@ public class AI : MonoBehaviour
                     }
                     else if (lootInRange)
                     {
-                        Actions.Stop(ref agent, ref rotated, transform);
+                        Actions.Stop(ref agent, ref directionSelected, transform);
                         try
                         {
                             nearestWeapon.Equip(ref player);
@@ -117,7 +117,7 @@ public class AI : MonoBehaviour
             }
             else // no weapon and moving
             {
-                if (rotated)
+                if (directionSelected)
                 {
                     MoveStill();
                 }
@@ -148,7 +148,7 @@ public class AI : MonoBehaviour
                     }
                     else if (nearestWeapon != null && lootDetected && lootInRange)
                     {
-                        Actions.Stop(ref agent, ref rotated, transform);
+                        Actions.Stop(ref agent, ref directionSelected, transform);
                         try
                         {
                             nearestWeapon.Equip(ref player);
@@ -167,7 +167,7 @@ public class AI : MonoBehaviour
             scannedEnemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
             if (remainingDistance <= 0) // has weapon and not moving
             {
-                if (rotated)
+                if (directionSelected)
                 {
                     Move();
                 }
@@ -180,7 +180,7 @@ public class AI : MonoBehaviour
                     else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && !enemyInRange)
                     {
                         GetNearestEnemy();
-                        if (!rotated)
+                        if (!directionSelected)
                         {
                             FindDirection();
                         }
@@ -188,7 +188,7 @@ public class AI : MonoBehaviour
                     else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && enemyInRange)
                     {
                         GetNearestEnemy();
-                        Actions.Stop(ref agent, ref rotated, transform);
+                        Actions.Stop(ref agent, ref directionSelected, transform);
                         Actions.Attack(ref nearestEnemy, ref player, ref attackIntervalTimer, transform);
                     }
                     else
@@ -199,7 +199,7 @@ public class AI : MonoBehaviour
             }
             else // has weapon and moving
             {
-                if (rotated)
+                if (directionSelected)
                 {
                     MoveStill();
                 }
@@ -215,7 +215,7 @@ public class AI : MonoBehaviour
                     }
                     else if (enemyInRange)
                     {
-                        Actions.Stop(ref agent, ref rotated, transform);
+                        Actions.Stop(ref agent, ref directionSelected, transform);
                     }
                 }
             }
@@ -260,27 +260,27 @@ public class AI : MonoBehaviour
 
     private void Move()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, FindDirection);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection);
     }
 
     private void MoveStill()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, FindDirection, transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection, transform.position);
     }
 
     private void MoveToNearestWeapon()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, FindDirection, nearestWeapon.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection, nearestWeapon.transform.position);
     }
 
     private void MoveToNearestEnemy()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, FindDirection, nearestEnemy.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection, nearestEnemy.transform.position);
     }
 
     private void FindDirection()
     {
-        Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref rotated);
+        Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref directionSelected);
     }
 
     private void GetNearestWeapon()

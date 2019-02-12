@@ -3,9 +3,9 @@ using UnityEngine.AI;
 
 public static class Actions
 {
-    public static void Stop(ref NavMeshAgent agent, ref bool rotated, Transform transform)
+    public static void Stop(ref NavMeshAgent agent, ref bool directionSelected, Transform transform)
     {
-        rotated = false;
+        directionSelected = false;
         agent.SetDestination(transform.position);
     }
 
