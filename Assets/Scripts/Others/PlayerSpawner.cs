@@ -11,7 +11,7 @@ public class PlayerSpawner : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private float lerpSpeed;
     [SerializeField] private Player prefab;
-    [SerializeField, Range(1, 10)] private int count;
+    [SerializeField, Range(1, 20)] private int count;
     [Header("Spawn Range")]
     [SerializeField] private float minRange;
     [SerializeField] private float maxRange;
