@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class AI : MonoBehaviour
 {
     #region variables
+    #region serialized fields
     [SerializeField, Range(5f, 20f)] private float roamRange;
     [SerializeField, Range(5f, 15f)] private float attackRange;
     [SerializeField, Range(2f, 4f)] private float pickupRange;
@@ -21,10 +22,15 @@ public class AI : MonoBehaviour
     [SerializeField] private Color roamColor;
     [SerializeField] private Color attackRangeColor;
     [SerializeField] private Color pickupRangeColor;
+    #endregion
 
+    #region static data
     private Player player;
     private NavMeshAgent agent;
     private Collider collider;
+    #endregion
+
+    #region dynamic data
     private Player nearestEnemy;
     private IWeapon nearestWeapon;
     private bool lootDetected;
@@ -48,6 +54,7 @@ public class AI : MonoBehaviour
     private System.Action getNearestEnemy;
     private Collider[] weapons;
     private Collider[] enemies;
+    #endregion
     #endregion
 
     #region unity methods
