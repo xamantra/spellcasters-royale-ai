@@ -45,8 +45,8 @@ public class AI : MonoBehaviour
     private bool rotated;
     private int currentRotationY;
     private float attackIntervalTimer;
-    private Collider[] weapons;
-    private Collider[] enemies;
+    private Collider[] scannedWeapons;
+    private Collider[] scannedEnemies;
     #endregion
     #endregion
 
@@ -73,7 +73,7 @@ public class AI : MonoBehaviour
 
         if (player.Weapon == null)
         {
-            weapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
+            scannedWeapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
             if (remainingDistance <= 0) // no weapon and not moving
             {
                 if (rotated)
@@ -164,7 +164,7 @@ public class AI : MonoBehaviour
         else
         {
             nearestWeapon = null;
-            enemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
+            scannedEnemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
             if (remainingDistance <= 0) // has weapon and not moving
             {
                 if (rotated)
@@ -285,12 +285,12 @@ public class AI : MonoBehaviour
 
     private void GetNearestWeapon()
     {
-        Sensor.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position);
+        Sensor.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, scannedWeapons, transform.position);
     }
 
     private void GetNearestEnemy()
     {
-        Sensor.GetNearestObject(ref nearestEnemy, ref gettingNearestObject, enemies, transform.position);
+        Sensor.GetNearestObject(ref nearestEnemy, ref gettingNearestObject, scannedEnemies, transform.position);
     }
     #endregion
 }
