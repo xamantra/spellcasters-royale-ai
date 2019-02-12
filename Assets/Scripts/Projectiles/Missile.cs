@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Missile : MonoBehaviour, IProjectile
+public class Missile : MonoBehaviour, IProjectile, IPoolable
 {
     [SerializeField, Range(1, 100)] private int damage;
     [SerializeField] private float projectileSpeed;
@@ -15,6 +15,12 @@ public class Missile : MonoBehaviour, IProjectile
     public MeshRenderer MeshRenderer {
         get {
             return meshRenderer;
+        }
+    }
+
+    public bool Enabled {
+        get {
+            return gameObject.activeSelf;
         }
     }
 
@@ -38,7 +44,7 @@ public class Missile : MonoBehaviour, IProjectile
         var distance = Mathf.Abs(Vector3.Distance(spawnPosition, transform.position));
         if (distance >= projectileRange)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 
@@ -59,11 +65,11 @@ public class Missile : MonoBehaviour, IProjectile
             else
             {
                 player.TakeDamage(this);
-                Destroy(gameObject);
+                gameObject.SetActive(false);
                 return;
             }
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }
