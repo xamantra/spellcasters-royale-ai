@@ -25,9 +25,8 @@ public class AI : MonoBehaviour
     private Player player;
     private NavMeshAgent agent;
     private Collider collider;
-    private Player nearestPlayer;
+    private Player nearestEnemy;
     private IWeapon nearestWeapon;
-    private Collider[] enemies;
     private bool lootDetected;
     private bool enemyDetected;
     private bool lootInRange;
@@ -40,18 +39,27 @@ public class AI : MonoBehaviour
     private bool rotated;
     private int currentRotationY;
     private float attackIntervalTimer;
+    private System.Action move;
+    private System.Action moveStill;
+    private System.Action moveToNearestWeapon;
+    private System.Action moveToNearestEnemy;
     private System.Action findDirection;
     private System.Action getNearestWeapon;
     private System.Action getNearestEnemy;
     private Collider[] weapons;
+    private Collider[] enemies;
     #endregion
 
     #region unity methods
     private void Start()
     {
-        findDirection = () => { Direction.SelectDirectionRandom(ref desiredRotationY, ref directionEngine, ref rotated); };
+        move = () => { NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection); };
+        moveStill = () => { NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, transform.position); };
+        moveToNearestWeapon = () => { NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestWeapon.transform.position); };
+        moveToNearestEnemy = () => { NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestEnemy.transform.position); };
+        findDirection = () => { Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref rotated); };
         getNearestWeapon = () => { Sensor.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position); };
-        getNearestEnemy = () => { Sensor.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position); };
+        getNearestEnemy = () => { Sensor.GetNearestObject(ref nearestEnemy, ref gettingNearestObject, enemies, transform.position); };
         Serialize();
     }
 
@@ -77,7 +85,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection);
+                    move?.Invoke();
                 }
                 else
                 {
@@ -89,7 +97,7 @@ public class AI : MonoBehaviour
                     {
                         try
                         {
-                            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestWeapon.transform.position);
+                            moveToNearestWeapon?.Invoke();
                         }
                         catch
                         {
@@ -118,7 +126,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, transform.position);
+                    moveStill?.Invoke();
                 }
                 else
                 {
@@ -129,14 +137,14 @@ public class AI : MonoBehaviour
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
                         nearestWeapon = null;
-                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection);
+                        move?.Invoke();
                     }
                     else if (nearestWeapon != null && lootDetected && !lootInRange)
                     {
                         try
                         {
                             if (nearestWeapon.Exists())
-                                NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestWeapon.transform.position);
+                                moveToNearestWeapon?.Invoke();
                             else
                                 nearestWeapon = null;
                         }
@@ -168,15 +176,15 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection);
+                    move?.Invoke();
                 }
                 else
                 {
-                    if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
+                    if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
                     {
                         getNearestEnemy?.Invoke();
                     }
-                    else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && !enemyInRange)
+                    else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && !enemyInRange)
                     {
                         getNearestEnemy?.Invoke();
                         if (!rotated)
@@ -184,11 +192,11 @@ public class AI : MonoBehaviour
                             findDirection?.Invoke();
                         }
                     }
-                    else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
+                    else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && enemyInRange)
                     {
                         getNearestEnemy?.Invoke();
                         Actions.Stop(ref agent, ref rotated, transform);
-                        Actions.Attack(ref nearestPlayer, ref player, ref attackIntervalTimer, transform);
+                        Actions.Attack(ref nearestEnemy, ref player, ref attackIntervalTimer, transform);
                     }
                     else
                     {
@@ -200,17 +208,17 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, transform.position);
+                    moveStill?.Invoke();
                 }
                 else
                 {
-                    if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
+                    if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
                     {
                         getNearestEnemy?.Invoke();
                     }
-                    else if (nearestPlayer != null && !enemyInRange)
+                    else if (nearestEnemy != null && !enemyInRange)
                     {
-                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, findDirection, nearestPlayer.transform.position);
+                        moveToNearestEnemy?.Invoke();
                     }
                     else if (enemyInRange)
                     {
