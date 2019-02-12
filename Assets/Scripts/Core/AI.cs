@@ -104,7 +104,7 @@ public class AI : MonoBehaviour
                     }
                     else
                     {
-                        RotateRandom();
+                        SelectDirectionRandom();
                     }
                 }
             }
@@ -204,7 +204,7 @@ public class AI : MonoBehaviour
                         ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
                         if (!rotated)
                         {
-                            RotateRandom();
+                            SelectDirectionRandom();
                         }
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
@@ -224,7 +224,7 @@ public class AI : MonoBehaviour
                     //}
                     else
                     {
-                        RotateRandom();
+                        SelectDirectionRandom();
                     }
                 }
             }
@@ -338,7 +338,7 @@ public class AI : MonoBehaviour
         }
         else
         {
-            RotateRandom();
+            SelectDirectionRandom();
         }
     }
 
@@ -358,7 +358,7 @@ public class AI : MonoBehaviour
         }
     }
 
-    private void RotateRandom()
+    private void SelectDirectionRandom()
     {
         desiredRotationY = Mathf.RoundToInt(Random.Range(0, 360));
         directionEngine.transform.rotation = Quaternion.Euler(0, desiredRotationY, 0);
