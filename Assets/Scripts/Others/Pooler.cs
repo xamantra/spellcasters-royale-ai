@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 public class Pooler<T> where T : IPoolable
 {
-    private Func<IPoolable> spawn;
+    private Func<T> spawn;
     private List<T> Pool = new List<T>();
 
-    public Pooler(Func<IPoolable> spawnMethod)
+    public Pooler(Func<T> spawnMethod)
     {
         spawn = spawnMethod;
     }
@@ -16,7 +16,7 @@ public class Pooler<T> where T : IPoolable
         var result = Pool.Find(x => !x.Enabled);
         if (result == null)
         {
-            result = (T)spawn?.Invoke();
+            result = spawn.Invoke();
             Pool.Add(result);
         }
         return result;
