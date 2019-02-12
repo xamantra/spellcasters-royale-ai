@@ -380,17 +380,12 @@ public class AI : MonoBehaviour
         //}
     }
 
-    private Collider[] Scan<T>(float radius, int layerMask)
-    {
-        return Physics.OverlapSphere(transform.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != collider).Distinct().ToArray() ?? new Collider[0];
-    }
-
     private void UpdateStates()
     {
-        lootDetected = Scan<IWeapon>(roamRange, lootLayerMask.value).Length > 0 ? true : false;
-        enemyDetected = Scan<Player>(roamRange, enemyLayerMask.value).Length > 0 ? true : false;
-        lootInRange = Scan<IWeapon>(pickupRange, lootLayerMask.value).Length > 0 ? true : false;
-        enemyInRange = Scan<Player>(attackRange, enemyLayerMask.value).Length > 0 ? true : false;
+        lootDetected = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value).Length > 0 ? true : false;
+        enemyDetected = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value).Length > 0 ? true : false;
+        lootInRange = Sensor.Scan<IWeapon>(transform, collider, pickupRange, lootLayerMask.value).Length > 0 ? true : false;
+        enemyInRange = Sensor.Scan<Player>(transform, collider, attackRange, enemyLayerMask.value).Length > 0 ? true : false;
     }
     #endregion
 }
