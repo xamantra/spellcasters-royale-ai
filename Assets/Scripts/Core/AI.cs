@@ -27,7 +27,7 @@ public class AI : MonoBehaviour
     private Collider collider;
     private Player nearestPlayer;
     private IWeapon nearestWeapon;
-
+    private Collider[] enemies;
     private bool lootDetected;
     private bool enemyDetected;
     private bool lootInRange;
@@ -41,12 +41,17 @@ public class AI : MonoBehaviour
     private int currentRotationY;
     private float attackIntervalTimer;
     private System.Action findDirection;
+    private System.Action getNearestWeapon;
+    private System.Action getNearestEnemy;
+    private Collider[] weapons;
     #endregion
 
     #region unity methods
     private void Start()
     {
         findDirection = () => { Direction.SelectDirectionRandom(ref desiredRotationY, ref directionEngine, ref rotated); };
+        getNearestWeapon = () => { ObjectSearch.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position); };
+        getNearestEnemy = () => { ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position); };
         Serialize();
     }
 
@@ -67,7 +72,7 @@ public class AI : MonoBehaviour
 
         if (player.Weapon == null)
         {
-            var weapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
+            weapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
             if (remainingDistance <= 0) // no weapon and not moving
             {
                 if (rotated)
@@ -78,7 +83,7 @@ public class AI : MonoBehaviour
                 {
                     if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                     {
-                        ObjectSearch.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position);
+                        getNearestWeapon?.Invoke();
                     }
                     else if (nearestWeapon != null && !lootInRange)
                     {
@@ -119,7 +124,7 @@ public class AI : MonoBehaviour
                 {
                     if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                     {
-                        ObjectSearch.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position);
+                        getNearestWeapon?.Invoke();
                     }
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
@@ -187,7 +192,7 @@ public class AI : MonoBehaviour
         else
         {
             nearestWeapon = null;
-            var enemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
+            enemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
             if (remainingDistance <= 0) // has weapon and not moving
             {
                 if (rotated)
@@ -198,11 +203,11 @@ public class AI : MonoBehaviour
                 {
                     if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
                     {
-                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
+                        getNearestEnemy?.Invoke();
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && !enemyInRange)
                     {
-                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
+                        getNearestEnemy?.Invoke();
                         if (!rotated)
                         {
                             findDirection?.Invoke();
@@ -210,7 +215,7 @@ public class AI : MonoBehaviour
                     }
                     else if (enemyDetected && !gettingNearestObject && nearestPlayer != null && enemyInRange)
                     {
-                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
+                        getNearestEnemy?.Invoke();
                         Actions.Stop(ref agent, ref rotated, transform);
                         Actions.Attack(ref nearestPlayer, ref player, ref attackIntervalTimer, transform);
                     }
@@ -239,7 +244,7 @@ public class AI : MonoBehaviour
                 {
                     if (enemyDetected && !gettingNearestObject && nearestPlayer == null)
                     {
-                        ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position);
+                        getNearestEnemy?.Invoke();
                     }
                     else if (nearestPlayer != null && !enemyInRange)
                     {
