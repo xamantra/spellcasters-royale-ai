@@ -66,7 +66,7 @@ public class AI : MonoBehaviour
 
         if (player.Weapon == null)
         {
-            var weapons = Scan<IWeapon>(roamRange, lootLayerMask.value);
+            var weapons =Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
             if (remainingDistance <= 0) // no weapon and not moving
             {
                 if (rotated)
@@ -186,7 +186,7 @@ public class AI : MonoBehaviour
         else
         {
             nearestWeapon = null;
-            var enemies = Scan<Player>(roamRange, enemyLayerMask.value);
+            var enemies =Sensor. Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
             if (remainingDistance <= 0) // has weapon and not moving
             {
                 if (rotated)
