@@ -8,9 +8,9 @@ public static class Sensor
         return Physics.OverlapSphere(scanner.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != self).Distinct().ToArray() ?? new Collider[0];
     }
 
-    public static bool InRange<T>(Transform transform, Collider collider, float attackRange, LayerMask enemyLayerMask)
+    public static bool InRange<T>(Transform transform, Collider collider, float range, LayerMask layerMask)
     {
-        return Scan<T>(transform, collider, attackRange, enemyLayerMask.value).Length > 0 ? true : false;
+        return Scan<T>(transform, collider, range, layerMask.value).Length > 0 ? true : false;
     }
 
     public static void GetNearestObject<T>(ref T result, ref bool flag, Collider[] objects, Vector3 position, int nearestIndex = 0, int index = 0)
