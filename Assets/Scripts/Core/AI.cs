@@ -27,7 +27,7 @@ public class AI : MonoBehaviour
     #region static data
     private Player player;
     private NavMeshAgent agent;
-    private Collider collider;
+    private new Collider collider;
     #endregion
 
     #region dynamic data
@@ -39,7 +39,6 @@ public class AI : MonoBehaviour
     private bool enemyInRange;
     private Vector3 currentDestination;
     private float remainingDistance;
-    private bool hasNearestWeapon;
     private bool gettingNearestObject;
     private int desiredRotationY;
     private bool directionSelected;
@@ -60,7 +59,6 @@ public class AI : MonoBehaviour
     {
         UpdateStates();
         remainingDistance = agent.remainingDistance;
-        hasNearestWeapon = nearestWeapon != null;
 
         if (attackIntervalTimer <= 0)
         {

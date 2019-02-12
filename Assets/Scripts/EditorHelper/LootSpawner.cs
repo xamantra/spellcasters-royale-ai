@@ -16,7 +16,7 @@ public class LootSpawner : MonoBehaviour
             var randomWeapon = weapons[Random.Range(0, weapons.Count)];
             var randX = Random.Range(minRange, maxRange);
             var randZ = Random.Range(minRange, maxRange);
-            var weapon = Instantiate(randomWeapon, new Vector3(randX, 1f, randZ), Quaternion.identity);
+            Instantiate(randomWeapon, new Vector3(randX, 1f, randZ), Quaternion.identity);
         }
     }
 }
