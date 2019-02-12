@@ -7387,7 +7387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1562841863}
-  lerpSpeed: 5
+  lerpSpeed: 3
   prefab: {fileID: 114020926920206764, guid: be09378b1895d294187932091d4c90d0, type: 2}
   count: 10
   minRange: -45
