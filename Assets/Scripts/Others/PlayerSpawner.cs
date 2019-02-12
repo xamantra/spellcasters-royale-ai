@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerSpawner : MonoBehaviour
 {
