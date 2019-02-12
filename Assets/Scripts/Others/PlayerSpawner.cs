@@ -27,7 +27,6 @@ public class PlayerSpawner : MonoBehaviour
             var player = Instantiate(prefab, new Vector3(Random.Range(minRange, maxRange), prefab.transform.position.y, Random.Range(minRange, maxRange)), Quaternion.identity);
             players[i] = player;
         }
-        currentPlayerIndex = 0;
         ChangePlayer("", 0);
     }
 
