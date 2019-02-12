@@ -66,12 +66,12 @@ public class AI : MonoBehaviour
 
         if (player.Weapon == null)
         {
-            var weapons =Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
+            var weapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
             if (remainingDistance <= 0) // no weapon and not moving
             {
                 if (rotated)
                 {
-                    Move();
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, failCallBack: SelectDirectionRandom);
                 }
                 else
                 {
@@ -83,7 +83,7 @@ public class AI : MonoBehaviour
                     {
                         try
                         {
-                            Move(nearestWeapon.transform.position);
+                            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, nearestWeapon.transform.position, SelectDirectionRandom);
                         }
                         catch
                         {
@@ -112,7 +112,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    Move(transform.position);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, transform.position, SelectDirectionRandom);
                 }
                 else
                 {
@@ -123,14 +123,14 @@ public class AI : MonoBehaviour
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
                         nearestWeapon = null;
-                        Move();
+                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, failCallBack: SelectDirectionRandom);
                     }
                     else if (nearestWeapon != null && lootDetected && !lootInRange)
                     {
                         try
                         {
                             if (nearestWeapon.Exists())
-                                Move(nearestWeapon.transform.position);
+                                NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, nearestWeapon.transform.position, SelectDirectionRandom);
                             else
                                 nearestWeapon = null;
                         }
@@ -186,12 +186,12 @@ public class AI : MonoBehaviour
         else
         {
             nearestWeapon = null;
-            var enemies =Sensor. Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
+            var enemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
             if (remainingDistance <= 0) // has weapon and not moving
             {
                 if (rotated)
                 {
-                    Move();
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, failCallBack: SelectDirectionRandom);
                 }
                 else
                 {
@@ -232,7 +232,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    Move(transform.position);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, transform.position, SelectDirectionRandom);
                 }
                 else
                 {
@@ -242,7 +242,7 @@ public class AI : MonoBehaviour
                     }
                     else if (nearestPlayer != null && !enemyInRange)
                     {
-                        Move(nearestPlayer.transform.position);
+                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, nearestPlayer.transform.position, SelectDirectionRandom);
                     }
                     else if (enemyInRange)
                     {
@@ -327,21 +327,6 @@ public class AI : MonoBehaviour
     #endregion
 
     #region AI methods
-    private void Move(Vector3? destination = null)
-    {
-        currentDestination = destination.HasValue ? destination.Value : directionGuide.position;
-        var validPath = agent.CalculatePath(currentDestination, agent.path);
-        if (validPath)
-        {
-            agent.SetDestination(currentDestination);
-            rotated = false;
-        }
-        else
-        {
-            SelectDirectionRandom();
-        }
-    }
-
     private void Stop()
     {
         rotated = false;
