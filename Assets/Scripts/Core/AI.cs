@@ -50,8 +50,8 @@ public class AI : MonoBehaviour
     private void Start()
     {
         findDirection = () => { Direction.SelectDirectionRandom(ref desiredRotationY, ref directionEngine, ref rotated); };
-        getNearestWeapon = () => { ObjectSearch.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position); };
-        getNearestEnemy = () => { ObjectSearch.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position); };
+        getNearestWeapon = () => { Sensor.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, weapons, transform.position); };
+        getNearestEnemy = () => { Sensor.GetNearestObject(ref nearestPlayer, ref gettingNearestObject, enemies, transform.position); };
         Serialize();
     }
 
