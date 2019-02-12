@@ -185,6 +185,7 @@ public class AI : MonoBehaviour
         }
         else
         {
+            nearestWeapon = null;
             var enemies = Scan<Player>(roamRange, enemyLayerMask.value);
             if (remainingDistance <= 0) // has weapon and not moving
             {
