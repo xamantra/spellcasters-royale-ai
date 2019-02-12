@@ -7386,7 +7386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5bd9a384e7259c42ac05fb03584bf5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfCamera: {fileID: 1562841863}
+  playerCamera: {fileID: 1562841863}
   prefab: {fileID: 114020926920206764, guid: be09378b1895d294187932091d4c90d0, type: 2}
   count: 10
   minRange: -45
