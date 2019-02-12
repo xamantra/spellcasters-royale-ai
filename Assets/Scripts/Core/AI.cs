@@ -71,7 +71,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, failCallBack: SelectDirectionRandom);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom);
                 }
                 else
                 {
@@ -83,7 +83,7 @@ public class AI : MonoBehaviour
                     {
                         try
                         {
-                            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, nearestWeapon.transform.position, SelectDirectionRandom);
+                            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, nearestWeapon.transform.position);
                         }
                         catch
                         {
@@ -112,7 +112,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, transform.position, SelectDirectionRandom);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, transform.position);
                 }
                 else
                 {
@@ -123,14 +123,14 @@ public class AI : MonoBehaviour
                     else if (nearestWeapon != null && !lootDetected && !lootInRange)
                     {
                         nearestWeapon = null;
-                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, failCallBack: SelectDirectionRandom);
+                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom);
                     }
                     else if (nearestWeapon != null && lootDetected && !lootInRange)
                     {
                         try
                         {
                             if (nearestWeapon.Exists())
-                                NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, nearestWeapon.transform.position, SelectDirectionRandom);
+                                NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, nearestWeapon.transform.position);
                             else
                                 nearestWeapon = null;
                         }
@@ -191,7 +191,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, failCallBack: SelectDirectionRandom);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom);
                 }
                 else
                 {
@@ -232,7 +232,7 @@ public class AI : MonoBehaviour
             {
                 if (rotated)
                 {
-                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, transform.position, SelectDirectionRandom);
+                    NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, transform.position);
                 }
                 else
                 {
@@ -242,7 +242,7 @@ public class AI : MonoBehaviour
                     }
                     else if (nearestPlayer != null && !enemyInRange)
                     {
-                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, nearestPlayer.transform.position, SelectDirectionRandom);
+                        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref rotated, SelectDirectionRandom, nearestPlayer.transform.position);
                     }
                     else if (enemyInRange)
                     {
