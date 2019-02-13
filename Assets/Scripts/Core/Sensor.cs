@@ -3,39 +3,63 @@ using UnityEngine;
 
 public static class Sensor
 {
-    public static Collider[] Scan<T>(Transform scanner, Collider self, float radius, int layerMask)
+    public static Collider[] Scan<T>(Transform ai, Collider self, float radius, int layerMask)
     {
-        return Physics.OverlapSphere(scanner.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != self).Distinct().ToArray() ?? new Collider[0];
+        return Physics.OverlapSphere(ai.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != self).Distinct().ToArray() ?? new Collider[0];
     }
 
-    public static bool InRange<T>(Transform transform, Collider collider, float range, LayerMask layerMask)
+    public static bool InRange<T>(Transform ai, Collider collider, float range, LayerMask layerMask)
     {
-        return Scan<T>(transform, collider, range, layerMask.value).Length > 0 ? true : false;
+        return Scan<T>(ai, collider, range, layerMask.value).Length > 0 ? true : false;
     }
 
-    public static void GetNearestObject<T>(ref T result, ref bool flag, Collider[] objects, Vector3 position, int nearestIndex = 0, int index = 0)
+    public static void GetNearestObject<T>(ref T result, ref bool flag, Collider[] objects, Vector3 aiPosition, int nearestIndex = 0, int currentIndex = 0)
     {
         if (objects.Length == 0) return;
         flag = true;
-        var nearest = objects[nearestIndex];
-        var i = index;
-        if (i == objects.Length - 1)
+        #region old version
+        //var nearest = objects[nearestIndex];
+        //if (currentIndex == objects.Length - 1)
+        //{
+        //    result = nearest.GetComponent<T>();
+        //    flag = false;
+        //    return;
+        //}
+        //else
+        //{
+        //    var nearestDistance = Mathf.RoundToInt(Vector3.Distance(aiPosition, nearest.transform.position));
+        //    var currentDistance = Mathf.RoundToInt(Vector3.Distance(aiPosition, objects[currentIndex].transform.position));
+        //    if (currentDistance < nearestDistance)
+        //    {
+        //        GetNearestObject(ref result, ref flag, objects, aiPosition, currentIndex, currentIndex + 1);
+        //    }
+        //    else
+        //    {
+        //        GetNearestObject(ref result, ref flag, objects, aiPosition, nearestIndex, currentIndex + 1);
+        //    }
+        //}
+        #endregion
+        Collider nearest = null;
+        for (int i = 0; i < objects.Length; i++)
         {
-            result = nearest.GetComponent<T>();
-            flag = false;
-            return;
-        }
-        else
-        {
-            var nearestDistance = Mathf.Abs(Vector3.Distance(position, nearest.transform.position));
-            var currentDistance = Mathf.Abs(Vector3.Distance(position, objects[i].transform.position));
-            if (currentDistance < nearestDistance)
+            if (i == 0)
             {
-                GetNearestObject(ref result, ref flag, objects, position, i, index + 1);
+                nearest = objects[i];
             }
             else
             {
-                GetNearestObject(ref result, ref flag, objects, position, nearestIndex, index + 1);
+                var nearestDistance = Mathf.RoundToInt(Vector3.Distance(aiPosition, nearest.transform.position));
+                var currentDistance = Mathf.RoundToInt(Vector3.Distance(aiPosition, objects[i].transform.position));
+                if (currentDistance < nearestDistance)
+                {
+                    nearest = objects[i];
+                }
+            }
+
+            if (i == objects.Length - 1)
+            {
+                result = nearest.GetComponent<T>();
+                flag = false;
             }
         }
     }
