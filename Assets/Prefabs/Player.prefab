@@ -286,7 +286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e998675cb7411bd499e8a3361866445f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  self: 0
   weaponHandler: {fileID: 23781182019759180}
   projectileSpawnPoint: {fileID: 4708020435454654}
   maxHealth: 100
@@ -318,6 +317,7 @@ MonoBehaviour:
   roamRange: 20
   attackRange: 12
   pickupRange: 2
+  sphereCastRadius: 2
   rotationLerp: 0.12
   attackInterval: 2
   enemyLayerMask:
