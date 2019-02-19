@@ -8,19 +8,9 @@ public static class Sensor
         return Physics.OverlapSphere(ai.position, radius, layerMask).Where(x => x.GetComponent<T>() != null && x != self).Distinct().ToArray() ?? new Collider[0];
     }
 
-    public static RaycastHit[] Scan<T>(Transform ai, float radius, float maxDistance, int layerMask)
-    {
-        return Physics.SphereCastAll(ai.position, radius, ai.forward, maxDistance, layerMask).Where(x => x.transform.GetComponent<T>() != null && x.transform != ai).Distinct().ToArray() ?? new RaycastHit[0];
-    }
-
     public static bool InRange<T>(Transform ai, Collider collider, float range, LayerMask layerMask)
     {
         return Scan<T>(ai, collider, range, layerMask.value).Length > 0 ? true : false;
-    }
-
-    public static bool InSight<T>(Transform ai, float radius, float maxDistance, LayerMask layerMask)
-    {
-        return Scan<T>(ai, radius, maxDistance, layerMask.value).Length > 0 ? true : false;
     }
 
     public static void GetNearestObject<T>(ref T result, ref bool flag, Collider[] objects, Vector3 aiPosition, int nearestIndex = 0, int currentIndex = 0)

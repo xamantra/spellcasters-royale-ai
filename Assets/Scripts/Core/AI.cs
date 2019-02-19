@@ -9,7 +9,6 @@ public class AI : MonoBehaviour
     [SerializeField, Range(5f, 20f)] private float roamRange;
     [SerializeField, Range(5f, 15f)] private float attackRange;
     [SerializeField, Range(2f, 4f)] private float pickupRange;
-    [SerializeField, Range(1f, 10f)] private float sphereCastRadius;
     [SerializeField, Range(0f, 1f)] private float rotationLerp;
     [SerializeField, Range(1f, 3f)] private float attackInterval;
     [SerializeField] private LayerMask enemyLayerMask;
@@ -234,8 +233,6 @@ public class AI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, roamRange);
         Gizmos.color = enemyInRange ? detectionColor : attackRangeColor;
         Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
     }
     #endregion
 
@@ -254,11 +251,9 @@ public class AI : MonoBehaviour
     private void UpdateStates()
     {
         lootDetected = Sensor.InRange<IWeapon>(transform, collider, roamRange, lootLayerMask);
-        //enemyDetected = Sensor.InRange<Player>(transform, collider, roamRange, enemyLayerMask);
-        enemyDetected = Sensor.InSight<Player>(transform, sphereCastRadius, roamRange, enemyLayerMask);
+        enemyDetected = Sensor.InRange<Player>(transform, collider, roamRange, enemyLayerMask);
         lootInRange = Sensor.InRange<IWeapon>(transform, collider, pickupRange, lootLayerMask);
-        //enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
-        enemyInRange = Sensor.InSight<Player>(transform, sphereCastRadius, attackRange, enemyLayerMask);
+        enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
     }
 
     private void FindDirection()
