@@ -16,6 +16,8 @@ public class AI : MonoBehaviour
     [SerializeField] private LayerMask lootLayerMask;
     [SerializeField] private Transform directionEngine;
     [SerializeField] private Transform directionGuide;
+    [SerializeField] private Eyes eyes;
+    [SerializeField] private Transform visionRange;
     [SerializeField] private float directionGuideElevation;
 
     [Header("Debug Colors")]
@@ -38,6 +40,7 @@ public class AI : MonoBehaviour
     private bool enemyDetected;
     private bool lootInRange;
     private bool enemyInRange;
+    private bool hasVision;
     private Vector3 currentDestination;
     private float remainingDistance;
     private bool gettingNearestObject;
@@ -47,6 +50,14 @@ public class AI : MonoBehaviour
     private float attackIntervalTimer;
     private Collider[] scannedWeapons;
     private Collider[] scannedEnemies;
+    #endregion
+
+    #region properties
+    public Eyes Eyes { get { return eyes; } }
+    public float AttackRange { get { return attackRange; } }
+    public LayerMask EnemyLayerMask { get { return enemyLayerMask; } }
+    public bool DirectionSelected { get { return directionSelected; } }
+    public bool HasVision { get { return hasVision; } }
     #endregion
     #endregion
 
@@ -236,6 +247,8 @@ public class AI : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.cyan;
         Gizmos.DrawWireSphere(transform.position, sphereCastRadius);
+        Gizmos.color = hasVision ? Color.red : Color.cyan;
+        Gizmos.DrawLine(transform.position + new Vector3(0, visionRange.localPosition.y, 0), visionRange.position);
     }
     #endregion
 
@@ -244,6 +257,8 @@ public class AI : MonoBehaviour
     {
         if (directionGuide != null)
             directionGuide.localPosition = new Vector3(0, directionGuideElevation, roamRange);
+        if (visionRange != null)
+            visionRange.localPosition = new Vector3(0, visionRange.localPosition.y, attackRange);
         player = GetComponent<Player>();
         agent = GetComponent<NavMeshAgent>();
         collider = GetComponent<Collider>();
@@ -253,15 +268,17 @@ public class AI : MonoBehaviour
     #region AI methods
     private void UpdateStates()
     {
+        eyes.Open(attackRange, visionRange.position, enemyLayerMask, transform.position + new Vector3(0, visionRange.localPosition.y, 0));
         lootDetected = Sensor.InRange<IWeapon>(transform, collider, roamRange, lootLayerMask);
-        //enemyDetected = Sensor.InRange<Player>(transform, collider, roamRange, enemyLayerMask);
-        enemyDetected = Sensor.InSight<Player>(transform, sphereCastRadius, roamRange, enemyLayerMask);
+        enemyDetected = Sensor.InRange<Player>(transform, collider, roamRange, enemyLayerMask);
+        //enemyDetected = Sensor.InSight<Player>(transform, sphereCastRadius, roamRange, enemyLayerMask);
         lootInRange = Sensor.InRange<IWeapon>(transform, collider, pickupRange, lootLayerMask);
-        //enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
-        enemyInRange = Sensor.InSight<Player>(transform, sphereCastRadius, attackRange, enemyLayerMask);
+        enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
+        //enemyInRange = Sensor.InSight<Player>(transform, sphereCastRadius, attackRange, enemyLayerMask);
+        hasVision = eyes.HasVision();
     }
 
-    private void FindDirection()
+    public void FindDirection()
     {
         Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref directionSelected);
     }
@@ -273,7 +290,7 @@ public class AI : MonoBehaviour
 
     private void Attack()
     {
-        Actions.Attack(ref nearestEnemy, ref player, ref attackIntervalTimer, transform);
+        Actions.Attack(this, ref nearestEnemy, ref player, ref attackIntervalTimer, transform);
     }
 
     private void Move()

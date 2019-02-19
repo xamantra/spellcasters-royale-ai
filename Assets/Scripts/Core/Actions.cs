@@ -9,13 +9,20 @@ public static class Actions
         agent.SetDestination(transform.position);
     }
 
-    public static void Attack(ref Player enemy, ref Player self, ref float attackIntervalTimer, Transform transform)
+    public static void Attack(AI ai, ref Player enemy, ref Player self, ref float attackIntervalTimer, Transform transform)
     {
         var canAttack = enemy != null && self != null && self.CanAttack();
         if (canAttack && attackIntervalTimer <= 0)
         {
             transform.LookAt(enemy.transform);
-            self.Attack();
+            if (ai.HasVision)
+            {
+                self.Attack();
+            }
+            else if (!ai.DirectionSelected)
+            {
+                ai.FindDirection();
+            }
         }
     }
 }
