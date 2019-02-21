@@ -6577,7 +6577,7 @@ MonoBehaviour:
   playerCamera: {fileID: 1562841863}
   lerpSpeed: 3
   prefab: {fileID: 114020926920206764, guid: be09378b1895d294187932091d4c90d0, type: 2}
-  count: 20
+  count: 1
   minRange: -45
   maxRange: 45
 --- !u!1 &2104959004
