@@ -38,7 +38,10 @@ public class AI : MonoBehaviour
     private bool lootInRange;
     private bool enemyInRange;
     private Vector3 currentDestination;
-    private float remainingDistance;
+    private int remainingDistance;
+
+    public bool IsMoving { get; private set; }
+
     private bool gettingNearestObject;
     private int desiredRotationY;
     private bool directionSelected;
@@ -58,7 +61,8 @@ public class AI : MonoBehaviour
     private void Update()
     {
         UpdateStates();
-        remainingDistance = agent.remainingDistance;
+        remainingDistance = Mathf.RoundToInt(Mathf.Abs(agent.remainingDistance));
+        IsMoving = remainingDistance > 0;
 
         if (attackIntervalTimer <= 0)
         {
@@ -72,89 +76,75 @@ public class AI : MonoBehaviour
         if (player.Weapon == null)
         {
             scannedWeapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
-            if (remainingDistance <= 0) // no weapon and not moving
+            if (!IsMoving) // no weapon and not moving
             {
-                if (directionSelected)
+                if (lootDetected && !gettingNearestObject && nearestWeapon == null)
                 {
-                    Move();
+                    GetNearestWeapon();
                 }
-                else
+                else if (nearestWeapon != null && !lootInRange)
                 {
-                    if (lootDetected && !gettingNearestObject && nearestWeapon == null)
+                    try
                     {
-                        GetNearestWeapon();
+                        MoveToNearestWeapon();
                     }
-                    else if (nearestWeapon != null && !lootInRange)
-                    {
-                        try
-                        {
-                            MoveToNearestWeapon();
-                        }
-                        catch
-                        {
-                            nearestWeapon = null;
-                        }
-                    }
-                    else if (lootInRange)
-                    {
-                        Stop();
-                        try
-                        {
-                            nearestWeapon.Equip(ref player);
-                        }
-                        catch
-                        {
-                            nearestWeapon = null;
-                        }
-                    }
-                    else
-                    {
-                        FindDirection();
-                    }
-                }
-            }
-            else // no weapon and moving
-            {
-                if (directionSelected)
-                {
-                    MoveStill();
-                }
-                else
-                {
-                    if (lootDetected && !gettingNearestObject && nearestWeapon == null)
-                    {
-                        GetNearestWeapon();
-                    }
-                    else if (nearestWeapon != null && !lootDetected && !lootInRange)
+                    catch
                     {
                         nearestWeapon = null;
-                        Move();
                     }
-                    else if (nearestWeapon != null && lootDetected && !lootInRange)
+                }
+                else if (lootInRange)
+                {
+                    Stop();
+                    try
                     {
-                        try
-                        {
-                            if (nearestWeapon.Exists())
-                                MoveToNearestWeapon();
-                            else
-                                nearestWeapon = null;
-                        }
-                        catch
-                        {
-                            nearestWeapon = null;
-                        }
+                        nearestWeapon.Equip(ref player);
                     }
-                    else if (nearestWeapon != null && lootDetected && lootInRange)
+                    catch
                     {
-                        Stop();
-                        try
-                        {
-                            nearestWeapon.Equip(ref player);
-                        }
-                        catch
-                        {
+                        nearestWeapon = null;
+                    }
+                }
+                else
+                {
+                    FindDirection(Move);
+                }
+            }
+            else
+            {
+                if (lootDetected && !gettingNearestObject && nearestWeapon == null)
+                {
+                    GetNearestWeapon();
+                }
+                else if (nearestWeapon != null && !lootDetected && !lootInRange)
+                {
+                    nearestWeapon = null;
+                    Move();
+                }
+                else if (nearestWeapon != null && lootDetected && !lootInRange)
+                {
+                    try
+                    {
+                        if (nearestWeapon.Exists())
+                            MoveToNearestWeapon();
+                        else
                             nearestWeapon = null;
-                        }
+                    }
+                    catch
+                    {
+                        nearestWeapon = null;
+                    }
+                }
+                else if (nearestWeapon != null && lootDetected && lootInRange)
+                {
+                    Stop();
+                    try
+                    {
+                        nearestWeapon.Equip(ref player);
+                    }
+                    catch
+                    {
+                        nearestWeapon = null;
                     }
                 }
             }
@@ -163,58 +153,42 @@ public class AI : MonoBehaviour
         {
             nearestWeapon = null;
             scannedEnemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
-            if (remainingDistance <= 0) // has weapon and not moving
+            if (!IsMoving) // has weapon and not moving
             {
-                if (directionSelected)
+                if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
                 {
-                    Move();
+                    GetNearestEnemy();
+                }
+                else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && !enemyInRange)
+                {
+                    GetNearestEnemy();
+                    MoveToNearestEnemy();
+                }
+                else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && enemyInRange)
+                {
+                    GetNearestEnemy();
+                    Stop();
+                    Attack();
                 }
                 else
                 {
-                    if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
-                    {
-                        GetNearestEnemy();
-                    }
-                    else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && !enemyInRange)
-                    {
-                        GetNearestEnemy();
-                        if (!directionSelected)
-                        {
-                            FindDirection();
-                        }
-                    }
-                    else if (enemyDetected && !gettingNearestObject && nearestEnemy != null && enemyInRange)
-                    {
-                        GetNearestEnemy();
-                        Stop();
-                        Attack();
-                    }
-                    else
-                    {
-                        FindDirection();
-                    }
+                    FindDirection(Move);
                 }
             }
             else // has weapon and moving
             {
-                if (directionSelected)
+                if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
                 {
-                    MoveStill();
+                    GetNearestEnemy();
                 }
-                else
+                else if (nearestEnemy != null && !enemyInRange)
                 {
-                    if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
-                    {
-                        GetNearestEnemy();
-                    }
-                    else if (nearestEnemy != null && !enemyInRange)
-                    {
-                        MoveToNearestEnemy();
-                    }
-                    else if (enemyInRange)
-                    {
-                        Stop();
-                    }
+                    MoveToNearestEnemy();
+                }
+                else if (enemyInRange)
+                {
+                    Stop();
+                    Attack();
                 }
             }
         }
@@ -256,9 +230,9 @@ public class AI : MonoBehaviour
         enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
     }
 
-    private void FindDirection()
+    private void FindDirection(System.Action callback = null)
     {
-        Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref directionSelected);
+        Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref directionSelected, callback);
     }
 
     private void Stop()
@@ -273,22 +247,22 @@ public class AI : MonoBehaviour
 
     private void Move()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected);
     }
 
     private void MoveStill()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection, transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, null, transform.position);
     }
 
     private void MoveToNearestWeapon()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection, nearestWeapon.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, null, nearestWeapon.transform.position);
     }
 
     private void MoveToNearestEnemy()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, FindDirection, nearestEnemy.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, null, nearestEnemy.transform.position);
     }
 
     private void GetNearestWeapon()
