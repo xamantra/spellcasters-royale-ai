@@ -252,17 +252,17 @@ public class AICore : MonoBehaviour
 
     private void MoveStill()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, null, transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, transform.position);
     }
 
     private void MoveToNearestWeapon()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, null, nearestWeapon.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, nearestWeapon.transform.position);
     }
 
     private void MoveToNearestEnemy()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, null, nearestEnemy.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, nearestEnemy.transform.position);
     }
 
     private void GetNearestWeapon()
