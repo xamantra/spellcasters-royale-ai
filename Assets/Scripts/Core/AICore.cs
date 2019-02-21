@@ -2,7 +2,7 @@
 using UnityEngine.AI;
 
 [RequireComponent(typeof(Player), typeof(NavMeshAgent), typeof(CapsuleCollider))]
-public class AI : MonoBehaviour
+public class AICore : MonoBehaviour
 {
     #region variables
     #region serialized fields
