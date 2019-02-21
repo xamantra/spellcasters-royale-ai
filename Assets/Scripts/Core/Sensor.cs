@@ -17,28 +17,6 @@ public static class Sensor
     {
         if (objects.Length == 0) return;
         flag = true;
-        #region old version
-        //var nearest = objects[nearestIndex];
-        //if (currentIndex == objects.Length - 1)
-        //{
-        //    result = nearest.GetComponent<T>();
-        //    flag = false;
-        //    return;
-        //}
-        //else
-        //{
-        //    var nearestDistance = Mathf.RoundToInt(Vector3.Distance(aiPosition, nearest.transform.position));
-        //    var currentDistance = Mathf.RoundToInt(Vector3.Distance(aiPosition, objects[currentIndex].transform.position));
-        //    if (currentDistance < nearestDistance)
-        //    {
-        //        GetNearestObject(ref result, ref flag, objects, aiPosition, currentIndex, currentIndex + 1);
-        //    }
-        //    else
-        //    {
-        //        GetNearestObject(ref result, ref flag, objects, aiPosition, nearestIndex, currentIndex + 1);
-        //    }
-        //}
-        #endregion
         Collider nearest = null;
         for (int i = 0; i < objects.Length; i++)
         {
