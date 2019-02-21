@@ -44,7 +44,6 @@ public class AICore : MonoBehaviour
 
     private bool gettingNearestObject;
     private int desiredRotationY;
-    private bool directionSelected;
     private int currentRotationY;
     private float attackIntervalTimer;
     private Collider[] scannedWeapons;
@@ -232,12 +231,12 @@ public class AICore : MonoBehaviour
 
     private void FindDirection(System.Action callback = null)
     {
-        Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, ref directionSelected, callback);
+        Direction.SelectRandomDirection(ref desiredRotationY, ref directionEngine, callback);
     }
 
     private void Stop()
     {
-        Actions.Stop(ref agent, ref directionSelected, transform);
+        Actions.Stop(ref agent, transform);
     }
 
     private void Attack()
@@ -247,22 +246,22 @@ public class AICore : MonoBehaviour
 
     private void Move()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide);
     }
 
     private void MoveStill()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, transform.position);
     }
 
     private void MoveToNearestWeapon()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, nearestWeapon.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, nearestWeapon.transform.position);
     }
 
     private void MoveToNearestEnemy()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, ref directionSelected, nearestEnemy.transform.position);
+        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, nearestEnemy.transform.position);
     }
 
     private void GetNearestWeapon()
