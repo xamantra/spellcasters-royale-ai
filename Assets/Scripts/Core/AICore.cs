@@ -251,11 +251,6 @@ public class AICore : MonoBehaviour
         NavPath.Move(ref agent, ref currentDestination, ref directionGuide);
     }
 
-    private void MoveStill()
-    {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, transform.position);
-    }
-
     private void MoveToNearestWeapon()
     {
         if (nearestLootable.Exists())
@@ -276,12 +271,6 @@ public class AICore : MonoBehaviour
     private void GetNearestEnemy()
     {
         Sensor.GetNearestObject(ref nearestEnemy, ref gettingNearestObject, scannedEnemies, transform.position);
-    }
-
-    public bool CanAttack()
-    {
-        // not exportable
-        return self.Weapon != null;
     }
     #endregion
 }
