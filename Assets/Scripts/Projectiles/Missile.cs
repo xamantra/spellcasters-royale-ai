@@ -24,10 +24,10 @@ public class Missile : MonoBehaviour, IProjectile, IPoolable
         }
     }
 
-    private Player owner;
+    private IPlayer owner;
     private Vector3 spawnPosition;
 
-    public void Spawn(Transform spawnPoint, ref Player owner, Material material)
+    public void Spawn(Transform spawnPoint, ref IPlayer owner, Material material)
     {
         gameObject.SetActive(false);
         transform.position = spawnPoint.position;
@@ -50,7 +50,7 @@ public class Missile : MonoBehaviour, IProjectile, IPoolable
 
     private void OnCollisionEnter(Collision collision)
     {
-        var player = collision.gameObject.GetComponent<Player>();
+        var player = collision.gameObject.GetComponent<IPlayer>();
         var otherProjectile = collision.gameObject.GetComponent<IProjectile>();
         if (otherProjectile != null)
         {

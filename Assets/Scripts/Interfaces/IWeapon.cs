@@ -2,8 +2,8 @@
 
 public interface IWeapon
 {
-    void Attack(Transform spawnPoint, Player attacker);
-    void Equip(ref Player player);
+    void Attack(Transform spawnPoint, IPlayer attacker);
+    void Equip(ref IPlayer player);
     bool Exists();
     Material Material { get; }
     Transform transform { get; }

@@ -8,13 +8,14 @@ public static class Actions
         agent.SetDestination(transform.position);
     }
 
-    public static void Attack(ref Player enemy, ref Player self, ref float attackIntervalTimer, Transform transform)
+    public static void Attack(ref IPlayer enemy, ref IBotControl botControl, ref float attackIntervalTimer, Transform transform)
     {
-        var canAttack = enemy != null && self != null && self.CanAttack();
+        // not exportable.
+        var canAttack = enemy != null && botControl != null && botControl.CanAttack();
         if (canAttack && attackIntervalTimer <= 0)
         {
             transform.LookAt(enemy.transform);
-            self.Attack();
+            botControl.Attack();
         }
     }
 }

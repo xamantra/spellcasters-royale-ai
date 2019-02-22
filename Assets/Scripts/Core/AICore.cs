@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Player), typeof(NavMeshAgent), typeof(CapsuleCollider))]
+[RequireComponent(typeof(IPlayer), typeof(NavMeshAgent), typeof(CapsuleCollider)), RequireComponent(typeof(IBotControl))]
 public class AICore : MonoBehaviour
 {
     #region variables
@@ -25,14 +25,15 @@ public class AICore : MonoBehaviour
     #endregion
 
     #region static data
-    private Player player;
+    private IBotControl botControl;
+    private IPlayer self;
     private NavMeshAgent agent;
     private new Collider collider;
     #endregion
 
     #region dynamic data
-    private Player nearestEnemy;
-    private IWeapon nearestWeapon;
+    private IPlayer nearestEnemy;
+    private ILootable nearestLootable;
     private bool lootDetected;
     private bool enemyDetected;
     private bool lootInRange;
@@ -72,16 +73,16 @@ public class AICore : MonoBehaviour
             attackIntervalTimer -= Time.deltaTime;
         }
 
-        if (player.Weapon == null)
+        if (self.Weapon == null)
         {
-            scannedWeapons = Sensor.Scan<IWeapon>(transform, collider, roamRange, lootLayerMask.value);
+            scannedWeapons = Sensor.Scan<ILootable>(transform, collider, roamRange, lootLayerMask.value);
             if (!IsMoving) // no weapon and not moving
             {
-                if (lootDetected && !gettingNearestObject && nearestWeapon == null)
+                if (lootDetected && !gettingNearestObject && nearestLootable == null)
                 {
                     GetNearestWeapon();
                 }
-                else if (nearestWeapon != null && !lootInRange)
+                else if (nearestLootable != null && !lootInRange)
                 {
                     try
                     {
@@ -89,7 +90,7 @@ public class AICore : MonoBehaviour
                     }
                     catch
                     {
-                        nearestWeapon = null;
+                        nearestLootable = null;
                     }
                 }
                 else if (lootInRange)
@@ -97,11 +98,11 @@ public class AICore : MonoBehaviour
                     Stop();
                     try
                     {
-                        nearestWeapon.Equip(ref player);
+                        nearestLootable.Pickup(ref self);
                     }
                     catch
                     {
-                        nearestWeapon = null;
+                        nearestLootable = null;
                     }
                 }
                 else
@@ -111,47 +112,47 @@ public class AICore : MonoBehaviour
             }
             else
             {
-                if (lootDetected && !gettingNearestObject && nearestWeapon == null)
+                if (lootDetected && !gettingNearestObject && nearestLootable == null)
                 {
                     GetNearestWeapon();
                 }
-                else if (nearestWeapon != null && !lootDetected && !lootInRange)
+                else if (nearestLootable != null && !lootDetected && !lootInRange)
                 {
-                    nearestWeapon = null;
+                    nearestLootable = null;
                     Move();
                 }
-                else if (nearestWeapon != null && lootDetected && !lootInRange)
+                else if (nearestLootable != null && lootDetected && !lootInRange)
                 {
                     try
                     {
-                        if (nearestWeapon.Exists())
+                        if (nearestLootable.Exists())
                             MoveToNearestWeapon();
                         else
-                            nearestWeapon = null;
+                            nearestLootable = null;
                     }
                     catch
                     {
-                        nearestWeapon = null;
+                        nearestLootable = null;
                     }
                 }
-                else if (nearestWeapon != null && lootDetected && lootInRange)
+                else if (nearestLootable != null && lootDetected && lootInRange)
                 {
                     Stop();
                     try
                     {
-                        nearestWeapon.Equip(ref player);
+                        nearestLootable.Pickup(ref self);
                     }
                     catch
                     {
-                        nearestWeapon = null;
+                        nearestLootable = null;
                     }
                 }
             }
         }
         else
         {
-            nearestWeapon = null;
-            scannedEnemies = Sensor.Scan<Player>(transform, collider, roamRange, enemyLayerMask.value);
+            nearestLootable = null;
+            scannedEnemies = Sensor.Scan<IPlayer>(transform, collider, roamRange, enemyLayerMask.value);
             if (!IsMoving) // has weapon and not moving
             {
                 if (enemyDetected && !gettingNearestObject && nearestEnemy == null)
@@ -214,19 +215,20 @@ public class AICore : MonoBehaviour
     {
         if (directionGuide != null)
             directionGuide.localPosition = new Vector3(0, directionGuideElevation, roamRange);
-        player = GetComponent<Player>();
+        self = GetComponent<IPlayer>();
         agent = GetComponent<NavMeshAgent>();
         collider = GetComponent<Collider>();
+        botControl = GetComponent<IBotControl>();
     }
     #endregion
 
     #region AI methods
     private void UpdateStates()
     {
-        lootDetected = Sensor.InRange<IWeapon>(transform, collider, roamRange, lootLayerMask);
-        enemyDetected = Sensor.InRange<Player>(transform, collider, roamRange, enemyLayerMask);
-        lootInRange = Sensor.InRange<IWeapon>(transform, collider, pickupRange, lootLayerMask);
-        enemyInRange = Sensor.InRange<Player>(transform, collider, attackRange, enemyLayerMask);
+        lootDetected = Sensor.InRange<ILootable>(transform, collider, roamRange, lootLayerMask);
+        enemyDetected = Sensor.InRange<IPlayer>(transform, collider, roamRange, enemyLayerMask);
+        lootInRange = Sensor.InRange<ILootable>(transform, collider, pickupRange, lootLayerMask);
+        enemyInRange = Sensor.InRange<IPlayer>(transform, collider, attackRange, enemyLayerMask);
     }
 
     private void FindDirection(System.Action callback = null)
@@ -239,9 +241,9 @@ public class AICore : MonoBehaviour
         Actions.Stop(ref agent, transform);
     }
 
-    private void Attack()
+    public void Attack()
     {
-        Actions.Attack(ref nearestEnemy, ref player, ref attackIntervalTimer, transform);
+        Actions.Attack(ref nearestEnemy, ref botControl, ref attackIntervalTimer, transform);
     }
 
     private void Move()
@@ -256,22 +258,30 @@ public class AICore : MonoBehaviour
 
     private void MoveToNearestWeapon()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, nearestWeapon.transform.position);
+        if (nearestLootable.Exists())
+            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, nearestLootable.transform.position);
     }
 
     private void MoveToNearestEnemy()
     {
-        NavPath.Move(ref agent, ref currentDestination, ref directionGuide, nearestEnemy.transform.position);
+        if (nearestEnemy.Exists())
+            NavPath.Move(ref agent, ref currentDestination, ref directionGuide, nearestEnemy.transform.position);
     }
 
     private void GetNearestWeapon()
     {
-        Sensor.GetNearestObject(ref nearestWeapon, ref gettingNearestObject, scannedWeapons, transform.position);
+        Sensor.GetNearestObject(ref nearestLootable, ref gettingNearestObject, scannedWeapons, transform.position);
     }
 
     private void GetNearestEnemy()
     {
         Sensor.GetNearestObject(ref nearestEnemy, ref gettingNearestObject, scannedEnemies, transform.position);
+    }
+
+    public bool CanAttack()
+    {
+        // not exportable
+        return self.Weapon != null;
     }
     #endregion
 }

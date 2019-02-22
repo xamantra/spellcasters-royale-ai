@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class MissileLauncher : MonoBehaviour, IWeapon
+public class MissileLauncher : MonoBehaviour, IWeapon, ILootable
 {
     [SerializeField] private Missile projectilePrefab;
 
@@ -16,13 +16,13 @@ public class MissileLauncher : MonoBehaviour, IWeapon
         missilePool = new Pooler<Missile>(() => { return Instantiate(projectilePrefab); });
     }
 
-    public void Attack(Transform spawnPoint, Player attacker)
+    public void Attack(Transform spawnPoint, IPlayer attacker)
     {
         var projectile = missilePool.Get();
         projectile.Spawn(spawnPoint, ref attacker, Material);
     }
 
-    public void Equip(ref Player player)
+    public void Equip(ref IPlayer player)
     {
         player.SetWeapon(this);
         transform.SetParent(player.transform);
@@ -32,6 +32,18 @@ public class MissileLauncher : MonoBehaviour, IWeapon
 
     public bool Exists()
     {
-        return gameObject.activeSelf;
+        try
+        {
+            return gameObject.activeSelf;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public void Pickup(ref IPlayer player)
+    {
+        Equip(ref player);
     }
 }
